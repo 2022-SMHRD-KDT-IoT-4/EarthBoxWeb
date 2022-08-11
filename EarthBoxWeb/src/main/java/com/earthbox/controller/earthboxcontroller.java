@@ -18,5 +18,16 @@ public class earthboxcontroller {
 		System.out.println("이용방법 실행");
 		return "faq";
 	}
-
+	
+	@RequestMapping("/qna.do")
+	public String f2() {
+		System.out.println("이용방법 실행");
+		return "qna";
+	}
+	
+	@RequestMapping("/streaming.do")
+	public String f3() {
+		System.out.println("이용방법 실행");
+		return "streaming";
+	}
 }
