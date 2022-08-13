@@ -45,6 +45,7 @@
 </head>
 
 <body stlye="background=#599555;">
+	<%String result = (String)session.getAttribute("user_id");%>
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -90,6 +91,44 @@
 		<!--end of header area-->
 	</section>
 	<!--End of Hedaer Section-->
+	
+	<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;"> 문의하기</h2>
+	<!-- form태그 시작 -->
+				<form class="form-horizontal" action="questionWrite.do" method="post">
+					<!-- 제목 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="title">제목:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="q_title"
+								placeholder="제목을 입력하세요" name="q_title">
+						</div>
+					</div>
+					
+					<!-- 사진 첨부 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="writer">첨부파일:</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control" id="q_file"
+								placeholder="사진을 업로드 하세요" name="q_file">
+						</div>
+					</div>
+					
+					<!-- 내용 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="content">내용:</label>
+						<div class="col-sm-10">
+							<textarea rows="10" id="q_content" class="form-control" name="q_content"></textarea>
+						</div>
+					</div>
+					
+					<!-- submit -->
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default">작성하기</button>
+						</div>
+					</div>
+				</form>
+	
 	
 	<!--Start of footer-->
 	<section id="footer">

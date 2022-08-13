@@ -45,7 +45,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#header">
-
+	<%String result = (String)session.getAttribute("user_id");%>
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -73,10 +73,10 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-								<li><a href="#welcome">로그인</a></li>
+								<li><a href="loginForm.do">로그인</a></li>
 								<li><a href="#welcome">판매방법</a></li>
 								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="#counter">FAQ</a></li>
+								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
 							</ul>
 						</div>
