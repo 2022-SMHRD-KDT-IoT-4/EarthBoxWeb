@@ -94,11 +94,7 @@
 
 	<!--  스트리밍 공간 -->
 	<div style="width: 100%; height: 1000px; background: #599555;">
-		<div class="graphBox">
-			<div class="box">
-				<iframe src="http://172.30.1.47:5000/" title="내용" width="50%" height="500px"></iframe>
-			</div>
-		</div>
+				<iframe src="http://172.30.1.47:5000/" title="내용" width="50%" height="500px" style="margin-top: 200px;margin-left: 500px;"></iframe>
 	</div>
 
 
