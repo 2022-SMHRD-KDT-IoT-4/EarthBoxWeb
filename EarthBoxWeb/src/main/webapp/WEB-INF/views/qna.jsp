@@ -47,7 +47,7 @@
 <body data-spy="scroll" data-target="#header">
 	<% 
 		String result = (String)session.getAttribute("user_id");
-		System.out.println(result);
+		System.out.println("qna 게시판 session : " + result);
 		
 	%>
 	
@@ -111,7 +111,9 @@
 
 <h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;">q&a</h2>
 <div class="panel-body">
-	<table id="qnatable" class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;x">
+
+    
+	<table id="qnatable" class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;">
 	  <thead>
 	    <tr>
 	      <th scope="col">NO</th>
@@ -123,13 +125,24 @@
 	  </thead>
 	  <tbody>
 	  <c:forEach items="${list }" var="list">
-	    <tr>
-	      <th scope="row">${list.q_seq }</th>
-	      <td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
-	      <td>${list.user_nick }</td>
-	      <td>${list.q_date }</td>
-	      <td><button>답변</button></td>
-	    </tr>
+		<!-- 자신이 작성한 글만 보이도록 -->
+		<%-- <c:if test="${result == list.user_id}"> --%>
+		    <tr>
+		      <th scope="row">${list.q_seq }</th>
+		      <%-- 답변글일 경우 글 제목 앞에 Re 글자 보여주기 --%>
+		      <%-- 1. 원글인 경우 --%>
+		      <c:if test="${list.groupOrd == 0}">
+		      	<td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
+		      </c:if>
+		      <%-- 2. 답변글인 경우 --%>
+		      <c:if test="${list.groupOrd > 0}">
+		      	<td><a href="questionContentView.do?q_seq=${list.q_seq }">RE : ${list.q_title }</a></td>
+		      </c:if>
+		      <td>${list.user_nick }</td>
+		      <td>${list.q_date }</td>
+		      <td><button>답변</button></td>
+		    </tr>
+	  	<%-- </c:if> --%>
 	   </c:forEach>
 	  </tbody>
 	</table>
@@ -137,13 +150,15 @@
 	<!-- 게시판 페이징 -->
 	
 	<!-- 게시글 검색 기능 -->
-    	<div class='col-sm-10'>
+    <div class="row">
+    	<div class='col-sm-4 col-sm-offset-6'>
     		<input id='search' type='text' class='form-control'>
     	</div>
     	<div> 
     		<button onclick="boardSearch()" type="button" class="btn btn-sm btn-info">검색</button>
     	</div>
     	<div style="padding:1px;"> </div>
+    </div>
     	
 	<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
 	<c:if test="${result =! null}">

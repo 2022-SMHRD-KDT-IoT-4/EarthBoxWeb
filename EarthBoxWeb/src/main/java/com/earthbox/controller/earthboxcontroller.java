@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.earthbox.domain.Criteria;
@@ -72,27 +73,28 @@ public class earthboxcontroller {
 		session.invalidate();
 		return "redirect:/index.do";
 	}
-	
+
 	// Q&A 게시판 실행(게시글 리스트 불러오기)
 	@RequestMapping("/qnaBoard.do")
 	// Criteria = 현재 페이지 번호 / 페이지 당 보여줄 게시글 수가 담긴 객체
-	public String qnaBoardList(HttpSession session, Model model, Criteria cri) throws Exception{
+	public String qnaBoardList(HttpSession session, Model model, Criteria cri) throws Exception {
 		System.out.println("q&a 게시판 실행");
 		String user_id = (String) session.getAttribute("user_id");
-		
+
 		PageMaker pagemaker = new PageMaker();
 		pagemaker.setCri(cri);
 		pagemaker.setTotalCount(100);
-		
+
 		List<QuestionListVO> list = q_mapper.qnaBoardList(cri);
 		model.addAttribute("list", list);
 		model.addAttribute("pagemaker", pagemaker);
 		System.out.println(list);
-		session.setAttribute("user_id", user_id);
 		
+		session.setAttribute("user_id", user_id);
+
 		return "qna";
 	}
-	
+
 	// Q&A 게시글 작성하기 위한 폼으로 이동
 	@RequestMapping("/qnaWriteForm.do")
 	public String qnaForm(HttpSession session) {
@@ -100,84 +102,110 @@ public class earthboxcontroller {
 		session.setAttribute("user_id", user_id);
 		return "qnaForm";
 	}
-	
+
 	// Q&A 게시글 작성
 	@RequestMapping("/questionWrite.do")
 	public String writeQuestion(HttpSession session, QuestionListVO vo) {
 		String user_id = (String) session.getAttribute("user_id");
-		
 		vo.setUser_id(user_id);
+		
 		q_mapper.qnaBoardWrite(vo);
+		System.out.println(vo);
+		
 		session.setAttribute("user_id", user_id);
 		return "redirect:/qnaBoard.do";
 	}
-	
+
+	// Q&A 답변 작성하기 위한 폼으로 이동
+	@RequestMapping("/answerWriteForm.do")
+	public String answerForm(HttpSession session, HttpServletRequest request) {
+		// admin만 답변할 수 있도록 한다
+		String user_id = (String) session.getAttribute("user_id");
+		String groupNo = request.getParameter("groupNo");
+		String groupOrd = request.getParameter("groupOrd");
+		System.out.println(user_id + groupNo + groupOrd);
+		
+		session.setAttribute("user_id", user_id);
+
+		return "answerForm";
+	}
+
+	// Q&A 답변 작성
+	@RequestMapping("/answerWrite.do")
+	public String writeAnswer(HttpSession session, QuestionListVO vo, Integer groupNo) {
+		String user_id = (String) session.getAttribute("user_id");
+		vo.setUser_id(user_id);
+		
+		q_mapper.qnaAnswerWrite(vo, groupNo);
+		System.out.println(vo);
+		
+		session.setAttribute("user_id", user_id);
+		return "redirect:/qnaBoard.do";
+	}
+
 	// 작성한 게시글 보기
 	@RequestMapping("/questionContentView.do")
 	public String questionContentView(HttpSession session, Model model, Integer q_seq) {
 		System.out.println("게시글 보기 페이지 진입");
 		String user_id = (String) session.getAttribute("user_id");
-		
+
 		QuestionListVO vo = q_mapper.questionContentView(q_seq);
 		model.addAttribute("vo", vo);
 		session.setAttribute("user_id", user_id);
-		
+
 		return "qnaContent";
 	}
-	
+
 	// 게시글 수정 Form으로 이동
 	@GetMapping("/questionUpdate.do")
 	public String questionUpdateForm(HttpSession session, Model model, Integer q_seq) {
 		String user_id = (String) session.getAttribute("user_id");
-		
+
 		QuestionListVO vo = q_mapper.questionContentView(q_seq);
 		model.addAttribute("vo", vo);
 		session.setAttribute("user_id", user_id);
-		
+
 		return "qnaUpdate";
 	}
-	
+
 	// 작성한 게시글 수정
 	@PostMapping("/questionUpdate.do")
 	public String questionUpdate(HttpSession session, QuestionVO vo) {
 		String user_id = (String) session.getAttribute("user_id");
-		
+
 		int row = 0;
 		row = q_mapper.qnaBoardUpdate(vo);
 		session.setAttribute("user_id", user_id);
-		
+
 		return "redirect:/questionContentView.do?q_seq=" + vo.getQ_seq();
-		
+
 	}
-	
+
 	// 작성한 게시글 삭제
 	@RequestMapping("/questionDelete.do")
 	public String questionDelete(HttpSession session, Integer q_seq) {
 		String user_id = (String) session.getAttribute("user_id");
-		
+
 		q_mapper.qnaBoardDelete(q_seq);
 		session.setAttribute("user_id", user_id);
-		
+
 		return "redirect:/qnaBoard.do";
 	}
-	
+
 	// 게시글 검색
 	@RequestMapping("/qnaSearch.do")
-	public @ResponseBody List<QuestionListVO> qnaSearch(String search){
+	public @ResponseBody List<QuestionListVO> qnaSearch(String search) {
 		System.out.println(search);
-		List<QuestionListVO> list = q_mapper.boardSearch("%"+search+"%");
-		
+		List<QuestionListVO> list = q_mapper.boardSearch("%" + search + "%");
+
 		return list;
 	}
-	
-	
-	
+
 	@RequestMapping("/faq.do")
 	public String f1() {
 		System.out.println("이용방법 실행");
 		return "faq";
 	}
-
 
 	@RequestMapping("/streaming.do")
 	public String f3() {

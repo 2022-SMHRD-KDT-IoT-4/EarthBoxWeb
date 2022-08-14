@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,24 +40,15 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
- 
- <script>
- $(function(){
-	if($("#q_file").val() == null){
-		document.getElementById("q_file").style.display = "none";
-	}else{//조건 1이 아닐떄
-		document.getElementById("q_file").style.display = "";
-	}
-})
- </script>       
+        
        
 </head>
 
 <body stlye="background=#599555;">
-	<% 
-		String result = (String)session.getAttribute("user_id");
-		System.out.println("qnaContent session : " + result);
-		
+	<%
+	String result = (String)session.getAttribute("user_id");
+	String groupNo = request.getParameter("groupNo");
+	String groupOrd = request.getParameter("groupOrd");
 	%>
 	<!--Start Hedaer Section-->
 	<section id="header">
@@ -107,45 +96,37 @@
 	</section>
 	<!--End of Hedaer Section-->
 	
-	<div class="panel-body">
-    
-    	<table class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;x">
-    		<tr>
-    			<td>제목</td>
-    			<td colspan="3">${vo.q_title }</td>
-    		</tr>
-    		<tr>
-    			<td>작성자</td>
-    			<td>${vo.user_nick }</td>
-    			<td>작성일</td>
-    			<td>${vo.q_date }</td>
-    		</tr>
-    		<tr id='q_file'>
-				<td>첨부파일</td>
-				<td colspan="3"><img src=${vo.q_file }"></td>
-			</tr>
-    		<tr>
-    			<td>내용</td>
-    			<% pageContext.setAttribute("newLine", "\n");  %>
-    			<td colspan="3">${fn:replace(vo.q_content, newLine, "<br>" )}</td>
-    		</tr>
-    		<tr>
-    		<td colspan="4" align="center">
-    			<!-- 작성자만 글 수정, 삭제 가능하도록 설정 -->
-	    		<c:if test="${result == null}">
-	    			<c:if test="${result == vo.user_id }">
-		    			<button onclick="location.href='questionUpdate.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-info">수정</button>
-		    			<button onclick="location.href='questionDelete.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-warning">삭제</button>
-		    			<!-- id가 admin일 때만 뜨도록 해주기 -->
-		    			<button onclick="location.href='answerWriteForm.do?q_seq=${vo.q_seq}&user_id=${result }&groupNo=${vo.groupNo }&groupOrd=${vo.groupOrd }'" class="btn btn-sm btn-success">답글</button>
-		    		</c:if>	
-	    		</c:if>
-    			<button onclick="location.href='qnaBoard.do?user_id=${result}'" class="btn btn-sm btn-danger">목록</button>
-    		</td>
-    		</tr>
-    	</table>
-    	
-    </div>
+	<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;">답변하기</h2>
+	<!-- form태그 시작 -->
+				<form class="form-horizontal" action="answerWrite.do" method="post">
+					<!-- 답글 쓰기 -->
+					<input type="hidden" name="groupNo" value=${groupNo }>
+					<input type="hidden" name="groupOrd" value=${groupOrd }>
+					
+					<!-- 제목 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="title">제목:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="q_title"
+								placeholder="제목을 입력하세요" name="q_title">
+						</div>
+					</div>
+					
+					<!-- 내용 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="content">내용:</label>
+						<div class="col-sm-10">
+							<textarea rows="10" id="q_content" class="form-control" name="q_content"></textarea>
+						</div>
+					</div>
+					
+					<!-- submit -->
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default">작성하기</button>
+						</div>
+					</div>
+				</form>
 	
 	
 	<!--Start of footer-->
