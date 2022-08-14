@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +45,7 @@
 
 </head>
 <body data-spy="scroll" data-target="#header">
-
+	<%String result = (String)session.getAttribute("user_id");%>
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -72,10 +73,10 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-								<li><a href="#welcome">로그인</a></li>
+								<li><a href="loginForm.do">로그인</a></li>
 								<li><a href="#welcome">판매방법</a></li>
 								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="#counter">FAQ</a></li>
+								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
 							</ul>
 						</div>
@@ -92,37 +93,33 @@
 	<!--End of Hedaer Section-->
 
 
-<h1 class="text-left" style="margin-top: 150px; margin-left: 150px; margin-bottom:50px;"> 문의게시판</h1>
-<table class="table" style="margin-left: 150px; max-width:70%; margin-bottom:500px;">
+<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;">q&a</h2>
+<div class="panel-body">
+<table class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500px;">
   <thead>
     <tr>
-      <th scope="col">번호</th>
+      <th scope="col">NO</th>
       <th scope="col">제목</th>
-      <th scope="col">제목</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">작성자</th>
+      <th scope="col">작성일</th>
+      <th scope="col">답변</th>
     </tr>
   </thead>
   <tbody>
+  <c:forEach items="${list }" var="list">
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">${list.q_seq }</th>
+      <td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
+      <td>${list.user_id }</td>
+      <td>${list.q_date }</td>
+      <td><button>답변</button></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+   </c:forEach>
   </tbody>
 </table>
+
+<button onclick="window.location.href='qnaWriteForm.do'" class="btn btn-sm btn-success">글작성</button>
+</div>
 	<!--Start of footer-->
 	<section id="footer">
 		<div class="container">
