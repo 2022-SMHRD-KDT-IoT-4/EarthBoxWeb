@@ -45,7 +45,12 @@
 
 </head>
 <body data-spy="scroll" data-target="#header">
-	<%String result = (String)session.getAttribute("user_id");%>
+	<% 
+		String result = (String)session.getAttribute("user_id");
+		System.out.println(result);
+		
+	%>
+	
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -73,11 +78,22 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
+							
+							<!-- 로그인 하지 않은 상태 -->
+							<% if(result == null){ %>
 								<li><a href="loginForm.do">로그인</a></li>
 								<li><a href="#welcome">판매방법</a></li>
 								<li><a href="#portfolio">구매방법</a></li>
 								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
+							<!-- 로그인 한 상태 -->
+							<% } else { %>
+								<li><a href="logout.do">로그아웃</a></li>
+								<li><a href="#welcome">판매방법</a></li>
+								<li><a href="#portfolio">구매방법</a></li>
+								<li><a href="qnaBoard.do">QnA</a></li>
+								<li><a href="#event">공지사항</a></li>
+							<%} %>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -95,30 +111,45 @@
 
 <h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;">q&a</h2>
 <div class="panel-body">
-<table class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500px;">
-  <thead>
-    <tr>
-      <th scope="col">NO</th>
-      <th scope="col">제목</th>
-      <th scope="col">작성자</th>
-      <th scope="col">작성일</th>
-      <th scope="col">답변</th>
-    </tr>
-  </thead>
-  <tbody>
-  <c:forEach items="${list }" var="list">
-    <tr>
-      <th scope="row">${list.q_seq }</th>
-      <td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
-      <td>${list.user_id }</td>
-      <td>${list.q_date }</td>
-      <td><button>답변</button></td>
-    </tr>
-   </c:forEach>
-  </tbody>
-</table>
-
-<button onclick="window.location.href='qnaWriteForm.do'" class="btn btn-sm btn-success">글작성</button>
+	<table id="qnatable" class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;x">
+	  <thead>
+	    <tr>
+	      <th scope="col">NO</th>
+	      <th scope="col">제목</th>
+	      <th scope="col">작성자</th>
+	      <th scope="col">작성일</th>
+	      <th scope="col">답변</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  <c:forEach items="${list }" var="list">
+	    <tr>
+	      <th scope="row">${list.q_seq }</th>
+	      <td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
+	      <td>${list.user_nick }</td>
+	      <td>${list.q_date }</td>
+	      <td><button>답변</button></td>
+	    </tr>
+	   </c:forEach>
+	  </tbody>
+	</table>
+	
+	<!-- 게시판 페이징 -->
+	
+	<!-- 게시글 검색 기능 -->
+    	<div class='col-sm-10'>
+    		<input id='search' type='text' class='form-control'>
+    	</div>
+    	<div> 
+    		<button onclick="boardSearch()" type="button" class="btn btn-sm btn-info">검색</button>
+    	</div>
+    	<div style="padding:1px;"> </div>
+    	
+	<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
+	<c:if test="${result =! null}">
+		<button onclick="window.location.href='qnaWriteForm.do?user_id=${result}'" class="btn btn-sm btn-success">글작성</button>
+	</c:if>
+	
 </div>
 	<!--Start of footer-->
 	<section id="footer">
@@ -182,6 +213,27 @@
 	<script src="js/bootstrap.min.js"></script>
 	<!-- Custom JavaScript-->
 	<script src="js/main.js"></script>
+	<script>
 	
+	$(function(){
+        $('#searchBtn').click(function() {
+			let search = $('#search').val();
+			console.log(search)
+			$.ajax({
+				url : 'qnaSearch.do',
+				type : 'get',
+				data : {
+					"search" : search
+				},
+				dataType : 'json',
+				success : function(result){
+					
+				},
+				error : function(){alert('error')} 
+			});
+		});
+	});
+
+	</script>
 </body>
 </html>

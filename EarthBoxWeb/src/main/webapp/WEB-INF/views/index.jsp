@@ -73,11 +73,20 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
+								<% if(result == null){ %>
 								<li><a href="loginForm.do">로그인</a></li>
 								<li><a href="#welcome">판매방법</a></li>
 								<li><a href="#portfolio">구매방법</a></li>
 								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
+							<!-- 로그인 한 상태 -->
+							<% } else { %>
+								<li><a href="logout.do">로그아웃</a></li>
+								<li><a href="#welcome">판매방법</a></li>
+								<li><a href="#portfolio">구매방법</a></li>
+								<li><a href="qnaBoard.do?user_id=${result }">QnA</a></li>
+								<li><a href="#event">공지사항</a></li>
+							<%} %>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
