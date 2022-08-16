@@ -195,8 +195,10 @@ public class earthboxcontroller {
 	@RequestMapping("/qnaSearch.do")
 	public @ResponseBody List<QuestionListVO> qnaSearch(String search) {
 		System.out.println(search);
-		List<QuestionListVO> list = q_mapper.boardSearch("%" + search + "%");
+		search = "%" + search + "%";
+		List<QuestionListVO> list = q_mapper.boardSearch(search);
 
+		System.out.println(list);
 		return list;
 	}
 

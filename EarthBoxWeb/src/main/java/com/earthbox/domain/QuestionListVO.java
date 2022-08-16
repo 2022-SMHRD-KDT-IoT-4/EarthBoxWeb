@@ -16,5 +16,6 @@ public class QuestionListVO {
 	private String user_id;
 	private String user_nick;
 	private String q_answer;
+	private String user_type;
  
 }
