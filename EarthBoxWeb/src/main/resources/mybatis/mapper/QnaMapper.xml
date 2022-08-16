@@ -9,7 +9,7 @@
 		perPageNum : 한 페이지 당 보여줄 게시글 개수
 	-->
 	<select id="qnaBoardList" resultType="com.earthbox.domain.QuestionListVO">
-		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.user_id
+		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.user_id, u.user_type
 		from question_tb q, user_tb u 
 		where q.user_id = u.user_id
 		order by q_date
@@ -50,10 +50,12 @@
 	</delete>
 	
 	<!-- 게시글 검색 -->
-	<select id="boardSearch" parameterType="com.earthbox.domain.QuestionListVO">
-		select * 
-		from question_tb 
-		where q_title like #{search}
+	<select id="boardSearch" resultType="com.earthbox.domain.QuestionListVO">
+		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.user_id
+		from question_tb q, user_tb u  
+		where q.user_id = u.user_id
+		and q.q_title like #{search}
+		order by q_date
 	</select>
 	
 	

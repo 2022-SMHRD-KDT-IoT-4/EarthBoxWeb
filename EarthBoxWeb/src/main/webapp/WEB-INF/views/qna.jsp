@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+request.setCharacterEncoding("utf-8");
+%>
+<%
+response.setContentType("text/html; charset=utf-8");
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,12 +52,11 @@
 
 </head>
 <body data-spy="scroll" data-target="#header">
-	<% 
-		String result = (String)session.getAttribute("user_id");
-		System.out.println("qna 게시판 session : " + result);
-		
+	<%
+	String result = (String) session.getAttribute("user_id");
+	System.out.println("qna 게시판 session : " + result);
 	%>
-	
+
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -78,23 +84,29 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-							
-							<!-- 로그인 하지 않은 상태 -->
-							<% if(result == null){ %>
+
+								<!-- 로그인 하지 않은 상태 -->
+								<%
+								if (result == null) {
+								%>
 								<li><a href="loginForm.do">로그인</a></li>
 								<li><a href="#welcome">판매방법</a></li>
 								<li><a href="#portfolio">구매방법</a></li>
 								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
-							<!-- 로그인 한 상태 -->
-							<% } else { %>
+								<!-- 로그인 한 상태 -->
+								<%
+								} else {
+								%>
 								<li><a href="logout.do">로그아웃</a></li>
 								<li><a href="#welcome">판매방법</a></li>
 								<li><a href="#portfolio">구매방법</a></li>
 								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
-							<%} %>
-							
+								<%
+								}
+								%>
+
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -110,77 +122,85 @@
 	<!--End of Hedaer Section-->
 
 
-<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px; font-family:'Noto Sans KR', sans-serif">Q&A</h2>
-<div class="panel-body">
+	<h2 class="text-center"
+		style="margin-top: 150px; margin-bottom: 50px; font-family: 'Noto Sans KR', sans-serif">Q&A</h2>
+	<div class="panel-body">
 
-    
-	<table id="qnatable" class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;">
-	  <thead>
-	    <tr>
-	      <th scope="col">NO</th>
-	      <th scope="col">제목</th>
-	      <th scope="col">작성자</th>
-	      <th scope="col">작성일</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	  <c:forEach items="${list }" var="list">
-		<!-- 자신이 작성한 글만 보이도록 -->
-		<%-- <c:if test="${result == list.user_id}"> --%>
-		    <tr>
-		      <th scope="row">${list.q_seq }</th>
-		      <td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
-		      <td>${list.user_nick }</td>
-		      <td>${list.q_date }</td>
-		    </tr>
-	  	<%-- </c:if> --%>
-	   </c:forEach>
-	  </tbody>
-	</table>
-	
-	<!-- 게시판 페이징 -->
-	<%-- 
-	<ul class="btn-group pagination">
-		<!-- 이전 버튼 생성 여부 확인, 버튼 보여주기 -->
-		<c:if test="${pageMaker.prev }">
-			<li>
-				<a href='/qnaBoard.do?page=${pageMaker.startPage-1 }/>'><i class="fa fa-chevron-left"></i></a>
-			</li>
-		</c:if>
+		<!-- 게시글 검색 기능 -->
+		<div class="row">
+			<div class='col-sm-2 col-sm-offset-8'>
+				<input id='search' type='text' class='form-control'>
+			</div>
+			<div>
+				<button id="searchBtn" type="button" class="btn btn-sm btn-info">검색</button>
+			</div>
+			<div style="padding: 1px;"> </div>
+		</div>
+		<table id="qnatable" class="table table-hover"
+			style="margin-left: auto; margin-right: auto; max-width: 70%; margin-bottom: 500p;">
+			<thead>
+				<tr>
+					<th scope="col">NO</th>
+					<th scope="col">제목</th>
+					<th scope="col">작성자</th>
+					<th scope="col">작성일</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<c:forEach items="${list}" var="list">
+					<!-- 자신이 작성한 글만 보이도록 -->
+					<c:if test="${user_id == list.user_id || user_id eq 'admin'}">
+					<tr>
+						<th scope="row">${list.q_seq }</th>
+						<td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
+						<td>${list.user_nick }</td>
+						<td>${list.q_date }</td>
+					</tr>
+					</c:if>
+				</c:forEach>
+			</tbody>
+		</table>
+
+		<!-- 게시판 페이징 -->
 		
-		<!-- 페이지의 시작 번호와 끝 번호 이용해 페이지 버튼 뿌려주기 -->
-		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-			<li>
-				<a href="/qnaBoard.do?page=${pageNum }/>"><i class="fa">${pageNum }</i></a>
-			</li>
-		</c:forEach>
+		<ul class="btn-group pagination">
+			<!-- 이전 버튼 생성 여부 확인, 버튼 보여주기 -->
+			<c:if test="${pageMaker.prev}">
+				<li>
+					<a href='/qnaBoard.do?page=${pageMaker.startPage - 1}/>'><i class="fa fa-chevron-left"></i></a>
+				</li>
+			</c:if>
+			
+			<!-- 페이지의 시작 번호와 끝 번호 이용해 페이지 버튼 뿌려주기 -->
+			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
+				<li>
+					<a href="/qnaBoard.do?page=${pageNum}/>"><i class="fa">${pageNum}</i></a>
+				</li>
+			</c:forEach>
+			
+			<!-- 다음 버튼 생성 여부 확인, 버튼 보여주기 -->
+			<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+				<li>
+					<a href='/qnaBoard.do?page=${pageMaker.endPage+1 }/>'><i class="fa fa-chevron-right"></i></a>
+				</li>
+			</c:if>
+		</ul>
 		
-		<!-- 다음 버튼 생성 여부 확인, 버튼 보여주기 -->
-		<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-			<li>
-				<a href='/qnaBoard.do?page=${pageMaker.endPage+1 }/>'><i class="fa fa-chevron-right"></i></a>
-			</li>
-		</c:if>
-	</ul>
-	--%>
-	
-	<!-- 게시글 검색 기능 -->
-    <div class="row">
-    	<div class='col-sm-4 col-sm-offset-6'>
-    		<input id='search' type='text' class='form-control'>
-    	</div>
-    	<div> 
-    		<button onclick="boardSearch()" type="button" class="btn btn-sm btn-info">검색</button>
-    	</div>
-    	<div style="padding:1px;"> </div>
-    </div>
-    	
-	<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
-	<c:if test="${result == null}">
-		<button onclick="window.location.href='qnaWriteForm.do?user_id=${result}'" class="btn btn-sm btn-success">글작성</button>
-	</c:if>
-	
-</div>
+
+
+
+		<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
+		<%
+		if (result != null) {
+		%>
+		<button
+			onclick="window.location.href='qnaWriteForm.do?user_id=${result}'"
+			class="btn btn-sm btn-success">글작성</button>
+		<%
+		}
+		%>
+
+	</div>
 	<!--Start of footer-->
 	<section id="footer">
 		<div class="container">
@@ -243,27 +263,6 @@
 	<script src="js/bootstrap.min.js"></script>
 	<!-- Custom JavaScript-->
 	<script src="js/main.js"></script>
-	<script>
-	
-	$(function(){
-        $('#searchBtn').click(function() {
-			let search = $('#search').val();
-			console.log(search)
-			$.ajax({
-				url : 'qnaSearch.do',
-				type : 'get',
-				data : {
-					"search" : search
-				},
-				dataType : 'json',
-				success : function(result){
-					
-				},
-				error : function(){alert('error')} 
-			});
-		});
-	});
-
-	</script>
+	<script src="js/search.js"></script>
 </body>
 </html>
