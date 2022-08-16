@@ -93,7 +93,7 @@
 	<!--End of Hedaer Section-->
 
 
-<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;">q&a</h2>
+<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px; font-family:'Noto Sans KR', sans-serif">Q&A</h2>
 <div class="panel-body">
 <table class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500px;">
   <thead>

@@ -65,7 +65,7 @@
 									class="icon-bar"></span>
 							</button>
 							<a class="navbar-brand custom_navbar-brand" href="#"><img
-								src="img/foruslogo.png" style="width: 75px; height: 75px">EarthBox</a>
+								src="img/foruslogo3.png" style="width: 60px; height: 60px">EarthBox</a>
 						</div>
 						<!--End of navbar-header-->
 
@@ -74,8 +74,6 @@
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
 								<li><a href="loginForm.do">로그인</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
 								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
 							</ul>
@@ -94,7 +92,7 @@
 
 
 
-	<!--Start of slider section-->
+	<!-----------------------------------------------------움직이는 이미지 세션 시작--------------------------------------------->
 	<section id="slider">
 		<div id="carousel-example-generic"
 			class="carousel slide carousel-fade" data-ride="carousel"
@@ -111,13 +109,13 @@
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
 					<div class="slider_overlay">
-						<img src="img/img1.jpg" alt="...">
+						<img src="img/img1.jpg" style="width:2150px; heigth:500px">
 						<div class="carousel-caption">
 							<div class="slider_text">
-								<h3>Protect</h3>
-								<h2>nature the environment</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-								<a href="" class="custom_btn">Read More</a>
+								<h3>EARTH BOX</h3>
+								<h2>환경을 생각하는 무인 중고거래 플랫폼</h2>
+								<p></p>
+								<a href="" class="custom_btn">mobile</a>
 							</div>
 						</div>
 					</div>
@@ -125,13 +123,13 @@
 				<!--End of item With Active-->
 				<div class="item">
 					<div class="slider_overlay">
-						<img src="img/img2.jpg" alt="...">
+						<img src="img/img2.jpg" style="width:2150px; heigth:500px">
 						<div class="carousel-caption">
 							<div class="slider_text">
-								<h3>Protect</h3>
-								<h2>nature the environment</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-								<a href="" class="custom_btn">Read More</a>
+								<h3>EARTH BOX</h3>
+								<h2>환경을 생각하는 무인 중고거래 플랫폼</h2>
+								<p></p>
+								<a href="" class="custom_btn">mobile</a>
 							</div>
 						</div>
 					</div>
@@ -139,13 +137,13 @@
 				<!--End of Item-->
 				<div class="item">
 					<div class="slider_overlay">
-						<img src="img/img3.jpg" alt="...">
+						<img src="img/img3.jpg" style="width:2150px; heigth:500px">
 						<div class="carousel-caption">
 							<div class="slider_text">
-								<h3>Protect</h3>
-								<h2>nature the environment</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-								<a href="" class="custom_btn">Read More</a>
+								<h3>EARTH BOX</h3>
+								<h2>환경을 생각하는 무인 중고거래 플랫폼</h2>
+								<p></p>
+								<a href="" class="custom_btn">mobile</a>
 							</div>
 						</div>
 					</div>
@@ -155,17 +153,17 @@
 			<!--End of Carousel Inner-->
 		</div>
 	</section>
-	<!--end of slider section-->
+	<!--------------------------------------------------------------움직이는 이미지 세션 끝------------------------------------------>
 
 
 
-	<!--Start of welcome section-->
+	<!--------------------------------------------------------------제품 소개 장점 소개 세션----------------------------------------->
 	<section id="welcome">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="wel_header">
-						<h2>welcome to green fair</h2>
+						<h2>Earth Box에 오신 것을 환영합니다.</h2>
 						<p>Our Green Fire Organization is one of the non profit
 							organization near you. Get our services like</p>
 					</div>
@@ -242,341 +240,110 @@
 		</div>
 		<!--End of container-->
 	</section>
-	<!--end of welcome section-->
-
-
-
-
-
-
-
-
-
-
-	<!--Start of counter-->
-	<section id="counter">
-		<div class="counter_img_overlay">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="counter_header">
-							<h2>OUR achivement</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-						</div>
-					</div>
-					<!--End of col-md-12-->
-				</div>
-				<!--End of row-->
-				<div class="row">
-					<div class="col-md-3">
-						<div class="counter_item text-center">
-							<div class="sigle_counter_item">
-								<img src="img/tree.png" alt="">
-								<div class="counter_text">
-									<span class="counter">1542</span>
-									<p>tree cut</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="counter_item text-center">
-							<div class="sigle_counter_item">
-								<img src="img/hand.png" alt="">
-								<div class="counter_text">
-									<span class="counter">1458</span>
-									<p>animal lost</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="counter_item text-center">
-							<div class="sigle_counter_item">
-								<img src="img/tuhnder.png" alt="">
-								<div class="counter_text">
-									<span class="counter">9854</span>
-									<p>blubs collected</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="counter_item text-center">
-							<div class="sigle_counter_item">
-								<img src="img/cloud.png" alt="">
-								<div class="counter_text">
-									<span class="counter">5412</span>
-									<p>water level</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--End of row-->
-			</div>
-			<!--End of container-->
-		</div>
+	<!--------------------------------------------------------------제품 소개 장점 소개 세션----------------------------------------->
+	
+	<!--------------------------------------------------------------세션 1----------------------------------------->
+	<section style="text-align: center;background: #f3f3f3;">
+	<div class= "container">
+	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px;"><b>이것은 어스박스.</b></h1>
+	<img src="img/img1.jpg" alt="...">
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-top: 100px;">판매하고 싶은 물건을 넣으면</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-bottom: 100px;">누구나 카드 결제로 구매할 수 있어요</h1>
+	</div>
+	<div class= "container">
+	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 100px;"><b>어스박스 앱도 있어요</b></h1>
+	<img src="img/img1.jpg" alt="...">
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-top: 100px; margin-bottom: 100px;">어스박스에 상품을 등록하거나 확인할 수 있어요.</h1>
+	</div>
 	</section>
-	<!--end of counter-->
+	
+	<!--------------------------------------------------------------세션 2----------------------------------------->
+	<section style="text-align: center;background: #fff">
+	<div class ="container">
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-bottom: 50px; margin-top:150px; color:#599555; font-size:30px;">판매방법</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; font-size:25px;">팔고싶은 물건 어스박스</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-top:20px; color:#599555; font-size:25px; ">앱에서 등록하고</h1>
+	
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; font-size:25px;">팔고싶은 물건</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-top:20px; color:#599555; font-size:25px; ">어스박스에 넣고</h1>
+	
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; font-size:25px;">내가 등록한 물건이</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-top:20px; color:#599555; font-size:25px; ">판매되면 계좌로 입금!!</h1>
+	
+	<img src="img/coin.png" style="width:20%; margin-left:600px; margin-top:-330px;">
+	</div>
+	</section>
+	
+	<!--------------------------------------------------------------세션 3----------------------------------------->
+	<section style="text-align: center;background: #fff">
+	<div class ="container">
+	<img src="img/shopping-bag.png" style="width:20%; margin-right:600px; margin-bottom:-650px;">
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-bottom: 50px; margin-top:150px; color:#599555; font-size:30px;">구매방법</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; font-size:25px;">사고싶은 물건 어스박스</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-top:20px; color:#599555; font-size:25px; ">앱에서 확인하고</h1>
+	
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; font-size:25px;">어스박스에서 상품</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-top:20px; color:#599555; font-size:25px; ">실물 확인하고</h1>
+	
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; font-size:25px;">내가 등록한 물건이</h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-top:20px; color:#599555; font-size:25px; margin-bottom:130px; ">카드 결제하면 구매완료!!</h1>
+	
+	</div>
+	</section>
+	
+	<!--------------------------------------------------------------세션 4----------------------------------------->
+	<section style="text-align: center;background: #f3f3f3;">
+	<div class= "container">
+	<img src="img/shield.png" Style="width:15%; margin-top:150px; margin-right:500px;">
+	<img src="img/store.png" Style="width:15%; margin-top:150px">
+	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px; margin-right:700px;"><b>안전해요</b></h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 100px; margin-left:680px; margin-top:-141px;"><b>편리해요</b></h1>
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px; margin-right:700px;">물건을 직접 보고 구매하는</h2>
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: -80px;margin-bottom: 100px; margin-right:740px; width:41%;">어스박스에는 벽돌 택배가 없어요.</h2>
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: -100px; margin-left:680px; margin-top:-143px;">어스박스가 팔아드려요!</h2>
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: -80px; margin-left:680px; margin-bottom:250px; ">물건을 맡겨주시면</h2>
+	</div>
+	</section>
+	
+	<!--------------------------------------------------------------세션 4----------------------------------------->
+	<section style="text-align: center;background: #fff;">
+	<div class= "container">
+	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px;"><b>어스박스</b></h1>
+	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: -70px;margin-bottom: 100px;"><b>이곳에서 만나실 수 있어요</b></h1>
+	
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px; margin-right:700px;"><img src="img/pin.png" Style="width:7%;"><b>라인동산아파트</b></h2>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top:-50px; margin-bottom: 50px; margin-right:700px;">관리사무소 안</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-right:700px;">광주 서구 염화로45번길 17</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-right:700px;">운영시간 : 09:00 ~ 21:00</h3>
+
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 100px; margin-left:680px; margin-top:-192px;"><img src="img/pin.png" Style="width:7%;"><b>한국아델리움</b></h2>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top:-50px; margin-bottom: 50px; margin-left:700px;">아파트 정문 옆 상가</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-left:700px;">광주 남구 서문대로627번길 19</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-left:700px;">운영시간 : 10:00 ~ 22:00</h3>
+	
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: 200px;margin-bottom: 100px; margin-right:700px;"><img src="img/pin.png" Style="width:7%;"><b>CGI센터</b></h2>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top:-50px; margin-bottom: 50px; margin-right:700px;">2층 복도</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-right:700px;">광주 남구 송암로 60</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-right:700px;">운영시간 : 09:00 ~ 19:00</h3>
+	
+	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 200px; margin-left:680px; margin-top:-192px;"><img src="img/pin.png" Style="width:7%;"><b>운암2차남양휴튼</b></h2>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -150px; margin-bottom: 50px; margin-left:700px;">1층 로비 안</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-left:700px;">광주 북구 북문대로 88</h3>
+	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-left:700px; margin-bottom:300px;">운영시간 : 11:00 ~ 23:00</h3>
+	</section>
 
 
 
 	
 
 
-	<!--Start of testimonial-->
-	<section id="testimonial">
-		<div class="testimonial_overlay">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="testimonial_header text-center">
-							<h2>testimonials</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-						</div>
-					</div>
-				</div>
-				<!--End of row-->
-				<section id="carousel">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<div class="carousel slide" id="fade-quote-carousel"
-									data-ride="carousel" data-interval="3000">
-									<!-- Carousel indicators -->
-									<ol class="carousel-indicators">
-										<li data-target="#fade-quote-carousel" data-slide-to="0"
-											class="active"></li>
-										<li data-target="#fade-quote-carousel" data-slide-to="1"></li>
-									</ol>
-									<!-- Carousel items -->
-									<div class="carousel-inner">
-										<div class="active item">
-											<div class="row">
-												<div class="col-md-6">
-													<div class="profile-circle">
-														<img src="img/tree_cut_3.jpg" alt="">
-													</div>
-													<div class="testimonial_content">
-														<i class="fa fa-quote-left"></i>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit. Quidem, veritatis nulla eum laudantium totam
-															tempore optio doloremque laboriosam quas, quos eaque
-															molestias odio aut eius animi. Impedit temporibus nisi
-															accusamus.</p>
-													</div>
-													<div class="testimonial_author">
-														<h5>Sadequr Rahman Sojib</h5>
-														<p>CEO, Fourder</p>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="profile-circle">
-														<img src="img/tree_cut_3.jpg" alt="">
-													</div>
-													<div class="testimonial_content">
-														<i class="fa fa-quote-left"></i>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit. Quidem, veritatis nulla eum laudantium totam
-															tempore optio doloremque laboriosam quas, quos eaque
-															molestias odio aut eius animi. Impedit temporibus nisi
-															accusamus.</p>
-													</div>
-													<div class="testimonial_author">
-														<h5>Sadequr Rahman Sojib</h5>
-														<p>CEO, Fourder</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!--End of item with active-->
-										<div class="item">
-											<div class="row">
-												<div class="col-md-6">
-													<div class="profile-circle">
-														<img src="img/tree_cut_3.jpg" alt="">
-													</div>
-													<div class="testimonial_content">
-														<i class="fa fa-quote-left"></i>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit. Quidem, veritatis nulla eum laudantium totam
-															tempore optio doloremque laboriosam quas, quos eaque
-															molestias odio aut eius animi. Impedit temporibus nisi
-															accusamus.</p>
-													</div>
-													<div class="testimonial_author">
-														<h5>Sadequr Rahman Sojib</h5>
-														<p>CEO, Fourder</p>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="profile-circle">
-														<img src="img/tree_cut_3.jpg" alt="">
-													</div>
-													<div class="testimonial_content">
-														<i class="fa fa-quote-left"></i>
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit. Quidem, veritatis nulla eum laudantium totam
-															tempore optio doloremque laboriosam quas, quos eaque
-															molestias odio aut eius animi. Impedit temporibus nisi
-															accusamus.</p>
-													</div>
-													<div class="testimonial_author">
-														<h5>Sadequr Rahman Sojib</h5>
-														<p>CEO, Fourder</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!--ENd of item-->
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--End of row-->
-					</div>
-					<!--End of container-->
-				</section>
-				<!--End of carousel-->
-			</div>
-		</div>
-		<!--End of container-->
-	</section>
-	<!--end of testimonial-->
-
-
-
-	<!--Start of blog-->
-	<section id="blog">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="latest_blog text-center">
-						<h2>latest blog</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-							Illo cum libero vitae quos eaque commodi.</p>
-					</div>
-				</div>
-			</div>
-			<!--End of row-->
-			<div class="row">
-				<div class="col-md-4">
-					<div class="blog_news">
-						<div class="single_blog_item">
-							<div class="blog_img">
-								<img src="img/climate_effect.jpg" alt="">
-							</div>
-							<div class="blog_content">
-								<a href=""><h3>Climate change is affecting bird
-										migration</h3></a>
-								<div class="expert">
-									<div class="left-side text-left">
-										<p class="left_side">
-											<span class="clock"><i class="fa fa-clock-o"></i></span> <span
-												class="time">Aug 19, 2016</span> <a href=""><span
-												class="admin"><i class="fa fa-user"></i> Admin</span></a>
-										</p>
-										<p class="right_side text-right">
-											<a href=""><span class="right_msg text-right"><i
-													class="fa fa-comments-o"></i></span> <span class="count">0</span></a>
-										</p>
-									</div>
-								</div>
-
-								<p class="blog_news_content">Lorem ipsum dolor sit amet,
-									consectetur adipscing elit. Lorem ipsum dolor sit amet, conse
-									ctetur adipiscing elit. consectetur Lorem ipsum dolor sitamet,
-									conse ctetur adipiscing elit.</p>
-								<a href="" class="blog_link">read more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--End of col-md-4-->
-				<div class="col-md-4">
-					<div class="blog_news">
-						<div class="single_blog_item">
-							<div class="blog_img">
-								<img src="img/air_pollutuon.jpg" alt="">
-							</div>
-							<div class="blog_content">
-								<a href=""><h3>How to avoid indoor air pollution?</h3></a>
-								<div class="expert">
-									<div class="left-side text-left">
-										<p class="left_side">
-											<span class="clock"><i class="fa fa-clock-o"></i></span> <span
-												class="time">Aug 19, 2016</span> <a href=""><span
-												class="admin"><i class="fa fa-user"></i> Admin</span></a>
-										</p>
-										<p class="right_side text-right">
-											<a href=""><span class="right_msg text-right"><i
-													class="fa fa-comments-o"></i></span> <span class="count">0</span></a>
-										</p>
-									</div>
-								</div>
-
-								<p class="blog_news_content">Lorem ipsum dolor sit amet,
-									consectetur adipscing elit. Lorem ipsum dolor sit amet, conse
-									ctetur adipiscing elit. consectetur Lorem ipsum dolor sitamet,
-									conse ctetur adipiscing elit.</p>
-								<a href="" class="blog_link">read more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--End of col-md-4-->
-				<div class="col-md-4">
-					<div class="blog_news">
-						<div class="single_blog_item">
-							<div class="blog_img">
-								<img src="img/threat_bear.jpg" alt="">
-							</div>
-							<div class="blog_content">
-								<a href=""><h3>Threat to Yellowstone’s grizzly bears.</h3></a>
-								<div class="expert">
-									<div class="left-side text-left">
-										<p class="left_side">
-											<span class="clock"><i class="fa fa-clock-o"></i></span> <span
-												class="time">Aug 19, 2016</span> <a href=""><span
-												class="admin"><i class="fa fa-user"></i> Admin</span></a>
-										</p>
-										<p class="right_side text-right">
-											<a href=""><span class="right_msg text-right"><i
-													class="fa fa-comments-o"></i></span> <span class="count">0</span></a>
-										</p>
-									</div>
-								</div>
-
-								<p class="blog_news_content">Lorem ipsum dolor sit amet,
-									consectetur adipscing elit. Lorem ipsum dolor sit amet, conse
-									ctetur adipiscing elit. consectetur Lorem ipsum dolor sitamet,
-									conse ctetur adipiscing elit.</p>
-								<a href="" class="blog_link">read more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--End of col-md-4-->
-			</div>
-			<!--End of row-->
-		</div>
-		<!--End of container-->
-	</section>
-	<!-- end of blog-->
+	
 
 
 
 
 
-
-
-
-
-
-	<!--Start of footer-->
+	<!--------------------------------------------------------------푸터----------------------------------------->
 	<section id="footer">
 		<div class="container">
 			<div class="row text-center">
@@ -599,7 +366,7 @@
 		</div>
 		<!--End of container-->
 	</section>
-	<!--End of footer-->
+	<!--------------------------------------------------------------푸터----------------------------------------->
 
 
 

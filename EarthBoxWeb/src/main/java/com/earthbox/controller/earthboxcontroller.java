@@ -119,10 +119,10 @@ public class earthboxcontroller {
 	
 	
 	
-	@RequestMapping("/faq.do")
+	@RequestMapping("/event.do")
 	public String f1() {
 		System.out.println("이용방법 실행");
-		return "faq";
+		return "event";
 	}
 
 

@@ -174,14 +174,14 @@ body {
 <body>
 	<div class="container2">
 		<h1 class="heading-primary">Earth Box</h1>
-		<h1 class="heading-primary">자주 묻는 질문</h1>
+		<h1 class="heading-primary" style="margin-top:-100px;">공지사항 / 이벤트</h1>
 		<div class="accordion">
 			<dl>
 				<dt>
 					<a href="#accordion1" aria-expanded="false"
 						aria-controls="accordion1"
 						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
-						한칸의 크기는 어떻게 되나요?</a>
+						[부적절한 서비스 이용 제제 안내]</a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion1" aria-hidden="true">
@@ -194,7 +194,7 @@ body {
 					<a href="#accordion2" aria-expanded="false"
 						aria-controls="accordion2"
 						class="accordion-title accordionTitle js-accordionTrigger">
-						EarthBox에서 거래하면 안되는 물품들!</a>
+						[공지사항]어스박스 판매 등록 수 변경</a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion2" aria-hidden="true">
@@ -205,12 +205,49 @@ body {
 					<a href="#accordion3" aria-expanded="false"
 						aria-controls="accordion3"
 						class="accordion-title accordionTitle js-accordionTrigger">
-						EarthBox의 판매 수수료는 얼마인가요? </a>
+						[이벤트]어스박스만물상점 챌린지 </a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion3" aria-hidden="true">
 					<p>몰라</p>
 				</dd>
+				<dt>
+					<a href="#accordion4" aria-expanded="false"
+						aria-controls="accordion4"
+						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
+						[이벤트]어스박스 1차 랜덤 Drop!</a>
+				</dt>
+				<dd class="accordion-content accordionItem is-collapsed"
+					id="accordion4" aria-hidden="true">
+					<p>일반적인 EarthBox 한칸의 크기는 가로 40cm, 세로28cm,높이 40cm 이며, 아파트에 설치되어
+						있는 파라박스 한칸의 크기는 모두 동일합니다.</p>
+					<p>이용에 참고해주시면 감사드리겠습니다:)</p>
+				</dd>
+				<dt>
+					<a href="#accordion5" aria-expanded="false"
+						aria-controls="accordion5"
+						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
+						어스박스 이용시 참고하세요!!</a>
+				</dt>
+				<dd class="accordion-content accordionItem is-collapsed"
+					id="accordion5" aria-hidden="true">
+					<p>일반적인 EarthBox 한칸의 크기는 가로 40cm, 세로28cm,높이 40cm 이며, 아파트에 설치되어
+						있는 파라박스 한칸의 크기는 모두 동일합니다.</p>
+					<p>이용에 참고해주시면 감사드리겠습니다:)</p>
+				</dd>
+				<dt>
+					<a href="#accordion6" aria-expanded="false"
+						aria-controls="accordion6"
+						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
+						어스박스 서비스 오픈!</a>
+				</dt>
+				<dd class="accordion-content accordionItem is-collapsed"
+					id="accordion6" aria-hidden="true">
+					<p>일반적인 EarthBox 한칸의 크기는 가로 40cm, 세로28cm,높이 40cm 이며, 아파트에 설치되어
+						있는 파라박스 한칸의 크기는 모두 동일합니다.</p>
+					<p>이용에 참고해주시면 감사드리겠습니다:)</p>
+				</dd>
+				
 			</dl>
 		</div>
 	</div>

@@ -91,9 +91,12 @@
 	</section>
 	<!--End of Hedaer Section-->
 
-
+	
 	<!--  스트리밍 공간 -->
 	<div style="width: 100%; height: 1000px; background: #599555;">
+	<div class="container">
+	<h1 style="font-family:'Noto Sans KR', sans-serif; text-align:center; margin-top:100px; margin-bottom:-100px; margin-right:70px; font-size:60px;"><b>한국아델리움</b></h1>
+	</div>
 				<iframe src="http://172.30.1.47:5000/" title="내용" width="50%" height="500px" style="margin-top: 200px;margin-left: 500px;"></iframe>
 	</div>
 

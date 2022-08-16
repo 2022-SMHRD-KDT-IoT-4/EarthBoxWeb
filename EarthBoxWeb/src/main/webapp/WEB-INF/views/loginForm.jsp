@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="img/forusico.png" type="image/png">
+	<link rel="icon" href="img/forusico.png" type="image/png"
 </head>
 <body>
 	<img class="wave" src="img/wave.png">
@@ -17,8 +17,8 @@
 			<img src="img/bg.svg">
 		</div>
 		<div class="login-content">
-			<form action="login.do" method='post'>
-				<img src="images/foruslogo.png"  width="300px" height="300px" style= margin-right:100px;>
+			<form action="login.do" method ='post'>
+				<img src="img/foruslogo.png" style="width:100%; margin-right:100px;">
 				<h2 class="title">EARTH BOX</h2>
            		<div class="input-div one">
            		   <div class="i">
@@ -42,6 +42,6 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/loginmain.js"></script>
 </body>
 </html>
