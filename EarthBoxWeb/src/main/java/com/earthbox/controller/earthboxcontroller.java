@@ -121,9 +121,6 @@ public class earthboxcontroller {
 	public String answerForm(HttpSession session, HttpServletRequest request) {
 		// admin만 답변할 수 있도록 한다
 		String user_id = (String) session.getAttribute("user_id");
-		String groupNo = request.getParameter("groupNo");
-		String groupOrd = request.getParameter("groupOrd");
-		System.out.println(user_id + groupNo + groupOrd);
 		
 		session.setAttribute("user_id", user_id);
 
@@ -132,11 +129,11 @@ public class earthboxcontroller {
 
 	// Q&A 답변 작성
 	@RequestMapping("/answerWrite.do")
-	public String writeAnswer(HttpSession session, QuestionListVO vo, Integer groupNo) {
+	public String writeAnswer(HttpSession session, QuestionListVO vo) {
 		String user_id = (String) session.getAttribute("user_id");
 		vo.setUser_id(user_id);
 		
-		q_mapper.qnaAnswerWrite(vo, groupNo);
+		q_mapper.qnaAnswerWrite(vo);
 		System.out.println(vo);
 		
 		session.setAttribute("user_id", user_id);

@@ -9,26 +9,21 @@
 		perPageNum : 한 페이지 당 보여줄 게시글 개수
 	-->
 	<select id="qnaBoardList" resultType="com.earthbox.domain.QuestionListVO">
-		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.groupNo, q.groupOrd, q.user_id
+		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.user_id
 		from question_tb q, user_tb u 
 		where q.user_id = u.user_id
-		order by groupNo DESC, groupOrd ASC
+		order by q_date
 	</select>
 	
 	<!-- q&a 게시판에 글 쓰기 -->
 	<insert id="qnaBoardWrite" parameterType="com.earthbox.domain.QuestionListVO">
-		<!-- order="BEFORE" : 삽입 전에 조회 -->
-		<selectKey keyProperty="qseq" resultType="int" order="BEFORE">
-			select last_insert_id()
-		</selectKey>
-	
-		INSERT INTO question_tb (groupNo, groupOrd, q_title, q_content, q_date, q_file, user_id) 
-		VALUES (#{qseq}, 0, 0, #{q_title}, #{q_content}, now(), #{q_file}, #{user_id})
+		INSERT INTO question_tb (q_title, q_content, q_date, user_id) 
+		VALUES (#{q_title}, #{q_content}, now(), #{user_id})
 	</insert>
 	
 	<!-- 작성한 게시글 보기 -->
 	<select id="questionContentView" resultType="com.earthbox.domain.QuestionListVO">
-		select q.q_seq, q.q_title, q.q_file, q.q_content, q.q_date, q.groupNo, q.groupOrd, u.user_nick 
+		select q.q_seq, q.q_title, q.q_content, q.q_date, u.user_nick 
 		from question_tb q, user_tb u 
 		where q.user_id = u.user_id 
 		and q.q_seq = #{q_seq}
@@ -36,15 +31,15 @@
 	
 	<!-- 답변 작성하기 -->
 	<insert id="qnaAnswerWrite" parameterType="com.earthbox.domain.QuestionListVO">
-	
-		INSERT INTO question_tb (groupNo, groupOrd, q_title, q_content, q_date, user_id) 
-		VALUES (#{groupNo}, #{groupOrd}, #{q_title}, #{q_content}, now(), #{user_id})
+		update question_tb 
+		set q_answer = #{q_answer}
+		where q_seq = #{q_seq}
 	</insert>
 	
 	<!-- 작성한 게시글 수정 -->
 	<update id="qnaBoardUpdate" parameterType="com.earthbox.domain.QuestionVO">
 		update question_tb 
-		set q_title = #{q_title}, q_file = #{q_file}, q_content = #{q_content} 
+		set q_title = #{q_title}, q_content = #{q_content} 
 		where q_seq = #{q_seq}
 	</update>
 	

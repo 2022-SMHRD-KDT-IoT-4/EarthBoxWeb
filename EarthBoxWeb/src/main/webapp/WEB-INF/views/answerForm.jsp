@@ -77,11 +77,21 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-								<li><a href="loginForm.do">로그인</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
+								<!-- 로그인 하지 않은 상태 -->
+								<% if(result == null){ %>
+									<li><a href="loginForm.do">로그인</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<!-- 로그인 한 상태 -->
+								<% } else { %>
+									<li><a href="logout.do">로그아웃</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<%} %>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -99,19 +109,7 @@
 	<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;">답변하기</h2>
 	<!-- form태그 시작 -->
 				<form class="form-horizontal" action="answerWrite.do" method="post">
-					<!-- 답글 쓰기 -->
-					<input type="hidden" name="groupNo" value=${groupNo }>
-					<input type="hidden" name="groupOrd" value=${groupOrd }>
-					
-					<!-- 제목 -->
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="title">제목:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="q_title"
-								placeholder="제목을 입력하세요" name="q_title">
-						</div>
-					</div>
-					
+
 					<!-- 내용 -->
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="content">내용:</label>

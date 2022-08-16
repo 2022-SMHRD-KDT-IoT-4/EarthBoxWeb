@@ -73,11 +73,21 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-								<li><a href="loginForm.do">로그인</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
+								<!-- 로그인 하지 않은 상태 -->
+								<% if(result == null){ %>
+									<li><a href="loginForm.do">로그인</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<!-- 로그인 한 상태 -->
+								<% } else { %>
+									<li><a href="logout.do">로그아웃</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<%} %>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -101,15 +111,6 @@
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="q_title"
 								placeholder="제목을 입력하세요" name="q_title">
-						</div>
-					</div>
-					
-					<!-- 사진 첨부 -->
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="writer">첨부파일:</label>
-						<div class="col-sm-10">
-							<input type="file" class="form-control" id="q_file"
-								placeholder="사진을 업로드 하세요" name="q_file">
 						</div>
 					</div>
 					

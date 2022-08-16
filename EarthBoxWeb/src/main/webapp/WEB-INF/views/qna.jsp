@@ -94,6 +94,7 @@
 								<li><a href="qnaBoard.do">QnA</a></li>
 								<li><a href="#event">공지사항</a></li>
 							<%} %>
+							
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -120,7 +121,6 @@
 	      <th scope="col">제목</th>
 	      <th scope="col">작성자</th>
 	      <th scope="col">작성일</th>
-	      <th scope="col">답변</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -129,18 +129,9 @@
 		<%-- <c:if test="${result == list.user_id}"> --%>
 		    <tr>
 		      <th scope="row">${list.q_seq }</th>
-		      <%-- 답변글일 경우 글 제목 앞에 Re 글자 보여주기 --%>
-		      <%-- 1. 원글인 경우 --%>
-		      <c:if test="${list.groupOrd == 0}">
-		      	<td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
-		      </c:if>
-		      <%-- 2. 답변글인 경우 --%>
-		      <c:if test="${list.groupOrd > 0}">
-		      	<td><a href="questionContentView.do?q_seq=${list.q_seq }">RE : ${list.q_title }</a></td>
-		      </c:if>
+		      <td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
 		      <td>${list.user_nick }</td>
 		      <td>${list.q_date }</td>
-		      <td><button>답변</button></td>
 		    </tr>
 	  	<%-- </c:if> --%>
 	   </c:forEach>
@@ -148,6 +139,30 @@
 	</table>
 	
 	<!-- 게시판 페이징 -->
+	<%-- 
+	<ul class="btn-group pagination">
+		<!-- 이전 버튼 생성 여부 확인, 버튼 보여주기 -->
+		<c:if test="${pageMaker.prev }">
+			<li>
+				<a href='/qnaBoard.do?page=${pageMaker.startPage-1 }/>'><i class="fa fa-chevron-left"></i></a>
+			</li>
+		</c:if>
+		
+		<!-- 페이지의 시작 번호와 끝 번호 이용해 페이지 버튼 뿌려주기 -->
+		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
+			<li>
+				<a href="/qnaBoard.do?page=${pageNum }/>"><i class="fa">${pageNum }</i></a>
+			</li>
+		</c:forEach>
+		
+		<!-- 다음 버튼 생성 여부 확인, 버튼 보여주기 -->
+		<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+			<li>
+				<a href='/qnaBoard.do?page=${pageMaker.endPage+1 }/>'><i class="fa fa-chevron-right"></i></a>
+			</li>
+		</c:if>
+	</ul>
+	--%>
 	
 	<!-- 게시글 검색 기능 -->
     <div class="row">
@@ -161,7 +176,7 @@
     </div>
     	
 	<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
-	<c:if test="${result =! null}">
+	<c:if test="${result == null}">
 		<button onclick="window.location.href='qnaWriteForm.do?user_id=${result}'" class="btn btn-sm btn-success">글작성</button>
 	</c:if>
 	

@@ -30,6 +30,6 @@ public interface QnaMapper {
 	public List<QuestionListVO> boardSearch(String search);
 
 	// 답변 작성하기
-	public int qnaAnswerWrite(QuestionListVO vo, Integer groupNo);
+	public int qnaAnswerWrite(QuestionListVO vo);
 
 }
