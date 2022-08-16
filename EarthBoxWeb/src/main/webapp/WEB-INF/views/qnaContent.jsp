@@ -42,12 +42,25 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
+ 
+ <script>
+ $(function(){
+	if($("#q_file").val() == null){
+		document.getElementById("q_file").style.display = "none";
+	}else{//조건 1이 아닐떄
+		document.getElementById("q_file").style.display = "";
+	}
+})
+ </script>       
        
 </head>
 
 <body stlye="background=#599555;">
-<%String result = (String)session.getAttribute("user_id");%>
+	<% 
+		String result = (String)session.getAttribute("user_id");
+		System.out.println("qnaContent session : " + result);
+		
+	%>
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -75,11 +88,21 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-								<li><a href="loginForm.do">로그인</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
+								<!-- 로그인 하지 않은 상태 -->
+								<% if(result == null){ %>
+									<li><a href="loginForm.do">로그인</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<!-- 로그인 한 상태 -->
+								<% } else { %>
+									<li><a href="logout.do">로그아웃</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<%} %>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -96,33 +119,47 @@
 	
 	<div class="panel-body">
     
-    	<table class="table table-hover">
+    	<table class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;x">
     		<tr>
-    			<td>제목 : </td>
-    			<td>${vo.q_title }</td>
+    			<td>제목</td>
+    			<td colspan="3">${vo.q_title }</td>
     		</tr>
     		<tr>
-    			<td>작성자 : </td>
-    			<td>${vo.user_id }</td>
-    		</tr>
-    		<tr>
-				<td colspan="2"><img src=${vo.q_file }"></td>
-			</tr>
-    		<tr>
-    			<td>내용 : </td>
-    			<% pageContext.setAttribute("newLine", "\n");  %>
-    			<td>${fn:replace(vo.q_content, newLine, "<br>" )}</td>
-    		</tr>
-    		<tr>
-    			<td>작성일 : </td>
+    			<td>작성자</td>
+    			<td>${vo.user_nick }</td>
+    			<td>작성일</td>
     			<td>${vo.q_date }</td>
     		</tr>
     		<tr>
-    		<td colspan="2" align="center">
-    			<button onclick="goUpdate(${vo.q_seq})" class="btn btn-sm btn-info">수정</button>
-    			<button onclick="goDelete(${vo.q_seq})" class="btn btn-sm btn-warning">삭제</button>
-    			<button onclick="goList()" class="btn btn-sm btn-success">목록</button>
-    		</td>
+    			<td>내용</td>
+    			<% pageContext.setAttribute("newLine", "\n");  %>
+    			<td colspan="3">${fn:replace(vo.q_content, newLine, "<br>" )}</td>
+    		</tr>
+    		<tr>
+	    		<td colspan="4" align="center">
+	    			<!-- 작성자만 글 수정, 삭제 가능하도록 설정 -->
+		    		<c:if test="${result == null}">
+		    			<c:if test="${result == vo.user_id }">
+			    			<button onclick="location.href='questionUpdate.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-info">수정</button>
+			    			<button onclick="location.href='questionDelete.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-warning">삭제</button>
+			    			<!-- id가 admin일 때만 뜨도록 해주기 -->
+			    			<button onclick="location.href='answerWriteForm.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-success">답글</button>
+			    		</c:if>	
+		    		</c:if>
+	    			<button onclick="location.href='qnaBoard.do?user_id=${result}'" class="btn btn-sm btn-danger">목록</button>
+	    		</td>
+    		</tr>
+    		<!-- 답변. 비동기 방식으로 답글 클릭하면 나오도록? -->
+    		<tr>
+    			<td>답변</td>
+    			<td colspan="3" align="center">
+    				<!-- 답변 -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<textarea rows="10" id="q_content" class="form-control" name="q_content"></textarea>
+						</div>
+					</div>
+    			</td>
     		</tr>
     	</table>
     	

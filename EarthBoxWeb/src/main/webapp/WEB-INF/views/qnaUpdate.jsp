@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +24,6 @@
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
 <!--Bootstrap Carousel-->
 <link type="text/css" rel="stylesheet" href="css/carousel.css" />
 
@@ -42,15 +40,12 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+        
+       
 </head>
-<body data-spy="scroll" data-target="#header">
-	<% 
-		String result = (String)session.getAttribute("user_id");
-		System.out.println("qna 게시판 session : " + result);
-		
-	%>
-	
+
+<body stlye="background=#599555;">
+	<%String result = (String)session.getAttribute("user_id");%>
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -78,23 +73,21 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-							
-							<!-- 로그인 하지 않은 상태 -->
-							<% if(result == null){ %>
-								<li><a href="loginForm.do">로그인</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
-							<!-- 로그인 한 상태 -->
-							<% } else { %>
-								<li><a href="logout.do">로그아웃</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
-							<%} %>
-							
+								<!-- 로그인 하지 않은 상태 -->
+								<% if(result == null){ %>
+									<li><a href="loginForm.do">로그인</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<!-- 로그인 한 상태 -->
+								<% } else { %>
+									<li><a href="logout.do">로그아웃</a></li>
+									<li><a href="#welcome">판매방법</a></li>
+									<li><a href="#portfolio">구매방법</a></li>
+									<li><a href="qnaBoard.do">QnA</a></li>
+									<li><a href="#event">공지사항</a></li>
+								<%} %>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -108,79 +101,46 @@
 		<!--end of header area-->
 	</section>
 	<!--End of Hedaer Section-->
-
-
-<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px; font-family:'Noto Sans KR', sans-serif">Q&A</h2>
-<div class="panel-body">
-
-    
-	<table id="qnatable" class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;">
-	  <thead>
-	    <tr>
-	      <th scope="col">NO</th>
-	      <th scope="col">제목</th>
-	      <th scope="col">작성자</th>
-	      <th scope="col">작성일</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	  <c:forEach items="${list }" var="list">
-		<!-- 자신이 작성한 글만 보이도록 -->
-		<%-- <c:if test="${result == list.user_id}"> --%>
-		    <tr>
-		      <th scope="row">${list.q_seq }</th>
-		      <td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
-		      <td>${list.user_nick }</td>
-		      <td>${list.q_date }</td>
-		    </tr>
-	  	<%-- </c:if> --%>
-	   </c:forEach>
-	  </tbody>
-	</table>
 	
-	<!-- 게시판 페이징 -->
-	<%-- 
-	<ul class="btn-group pagination">
-		<!-- 이전 버튼 생성 여부 확인, 버튼 보여주기 -->
-		<c:if test="${pageMaker.prev }">
-			<li>
-				<a href='/qnaBoard.do?page=${pageMaker.startPage-1 }/>'><i class="fa fa-chevron-left"></i></a>
-			</li>
-		</c:if>
-		
-		<!-- 페이지의 시작 번호와 끝 번호 이용해 페이지 버튼 뿌려주기 -->
-		<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-			<li>
-				<a href="/qnaBoard.do?page=${pageNum }/>"><i class="fa">${pageNum }</i></a>
-			</li>
-		</c:forEach>
-		
-		<!-- 다음 버튼 생성 여부 확인, 버튼 보여주기 -->
-		<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
-			<li>
-				<a href='/qnaBoard.do?page=${pageMaker.endPage+1 }/>'><i class="fa fa-chevron-right"></i></a>
-			</li>
-		</c:if>
-	</ul>
-	--%>
+	<h2 class="text-center" style="margin-top: 150px; margin-bottom:50px;"> 문의하기</h2>
+	<!-- form태그 시작 -->
+				<form class="form-horizontal" action="questionUpdate.do" method="post">
+				<input type="hidden" id="q_seq" name="q_seq" value="${vo.q_seq }">
+					<!-- 제목 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="title">제목</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="q_title"
+								value="${vo.q_title }" name="q_title">
+						</div>
+					</div>
+					
+					<!-- 사진 첨부 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="writer">첨부파일</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control" id="q_file"
+								value="${vo.q_file }" name="q_file">
+						</div>
+					</div>
+					
+					<!-- 내용 -->
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="content">내용</label>
+						<div class="col-sm-10">
+							<textarea rows="10" id="q_content" class="form-control" name="q_content">${vo.q_content }</textarea>
+						</div>
+					</div>
+					
+					<!-- submit -->
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default">작성하기</button>
+						</div>
+					</div>
+				</form>
 	
-	<!-- 게시글 검색 기능 -->
-    <div class="row">
-    	<div class='col-sm-4 col-sm-offset-6'>
-    		<input id='search' type='text' class='form-control'>
-    	</div>
-    	<div> 
-    		<button onclick="boardSearch()" type="button" class="btn btn-sm btn-info">검색</button>
-    	</div>
-    	<div style="padding:1px;"> </div>
-    </div>
-    	
-	<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
-	<c:if test="${result == null}">
-		<button onclick="window.location.href='qnaWriteForm.do?user_id=${result}'" class="btn btn-sm btn-success">글작성</button>
-	</c:if>
 	
-</div>
 	<!--Start of footer-->
 	<section id="footer">
 		<div class="container">
@@ -207,6 +167,12 @@
 	<!--End of footer-->
 
 
+
+	<!--Scroll to top-->
+	<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+	<!--End of Scroll to top-->
+
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>-->
 	<script src="js/jquery-1.12.3.min.js"></script>
@@ -215,6 +181,22 @@
 	<script src="js/waypoints.min.js"></script>
 	<!--Counter UP-->
 	<script src="js/jquery.counterup.min.js"></script>
+
+	<script>
+		//for counter up
+		$('.counter').counterUp({
+			delay : 10,
+			time : 1000
+		});
+	</script>
+
+	<!--Gmaps-->
+	<script src="js/gmaps.min.js"></script>
+	
+	<!--Google Maps API-->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjxvF9oTfcziZWw--3phPVx1ztAsyhXL4"></script>
+
 
 	<!--Isotope-->
 	<script src="js/isotope/min/scripts-min.js"></script>
@@ -243,27 +225,5 @@
 	<script src="js/bootstrap.min.js"></script>
 	<!-- Custom JavaScript-->
 	<script src="js/main.js"></script>
-	<script>
-	
-	$(function(){
-        $('#searchBtn').click(function() {
-			let search = $('#search').val();
-			console.log(search)
-			$.ajax({
-				url : 'qnaSearch.do',
-				type : 'get',
-				data : {
-					"search" : search
-				},
-				dataType : 'json',
-				success : function(result){
-					
-				},
-				error : function(){alert('error')} 
-			});
-		});
-	});
-
-	</script>
 </body>
 </html>

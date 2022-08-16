@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.earthbox.mapper.QnaMapper">
+
+	<!--  
+		q&a 게시판 리스트 불러오기
+		pageStart : 특정 페이지 첫 번째 게시글 행
+		perPageNum : 한 페이지 당 보여줄 게시글 개수
+	-->
+	<select id="qnaBoardList" resultType="com.earthbox.domain.QuestionListVO">
+		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.user_id
+		from question_tb q, user_tb u 
+		where q.user_id = u.user_id
+		order by q_date
+	</select>
+	
+	<!-- q&a 게시판에 글 쓰기 -->
+	<insert id="qnaBoardWrite" parameterType="com.earthbox.domain.QuestionListVO">
+		INSERT INTO question_tb (q_title, q_content, q_date, user_id) 
+		VALUES (#{q_title}, #{q_content}, now(), #{user_id})
+	</insert>
+	
+	<!-- 작성한 게시글 보기 -->
+	<select id="questionContentView" resultType="com.earthbox.domain.QuestionListVO">
+		select q.q_seq, q.q_title, q.q_content, q.q_date, u.user_nick 
+		from question_tb q, user_tb u 
+		where q.user_id = u.user_id 
+		and q.q_seq = #{q_seq}
+	</select>
+	
+	<!-- 답변 작성하기 -->
+	<insert id="qnaAnswerWrite" parameterType="com.earthbox.domain.QuestionListVO">
+		update question_tb 
+		set q_answer = #{q_answer}
+		where q_seq = #{q_seq}
+	</insert>
+	
+	<!-- 작성한 게시글 수정 -->
+	<update id="qnaBoardUpdate" parameterType="com.earthbox.domain.QuestionVO">
+		update question_tb 
+		set q_title = #{q_title}, q_content = #{q_content} 
+		where q_seq = #{q_seq}
+	</update>
+	
+	<!-- 작성한 게시글 삭제 -->
+	<delete id="qnaBoardDelete">
+		delete from question_tb 
+		where q_seq = #{q_seq}
+	</delete>
+	
+	<!-- 게시글 검색 -->
+	<select id="boardSearch" parameterType="com.earthbox.domain.QuestionListVO">
+		select * 
+		from question_tb 
+		where q_title like #{search}
+	</select>
+	
+	
+	<!-- select q.q_seq, q.q_title, u.user_nick, q.q_date 
+		from question_tb q, user_tb u 
+		where q.user_id = u.user_id 
+		order by q.q_date limit ${pageStart}, #{perPageNum} -->
+</mapper>
