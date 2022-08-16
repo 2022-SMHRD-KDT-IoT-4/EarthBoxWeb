@@ -23,7 +23,7 @@
 	
 	<!-- 작성한 게시글 보기 -->
 	<select id="questionContentView" resultType="com.earthbox.domain.QuestionListVO">
-		select q.q_seq, q.q_title, q.q_content, q.q_date, u.user_nick 
+		select q.q_seq, q.q_title, q.q_content, q.q_date, u.user_nick, q.q_answer
 		from question_tb q, user_tb u 
 		where q.user_id = u.user_id 
 		and q.q_seq = #{q_seq}

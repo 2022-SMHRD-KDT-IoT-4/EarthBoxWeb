@@ -87,7 +87,7 @@ public class earthboxcontroller {
 
 		List<QuestionListVO> list = q_mapper.qnaBoardList(cri);
 		model.addAttribute("list", list);
-		model.addAttribute("pagemaker", pagemaker);
+		model.addAttribute("pageMaker", pagemaker);
 		System.out.println(list);
 		
 		session.setAttribute("user_id", user_id);

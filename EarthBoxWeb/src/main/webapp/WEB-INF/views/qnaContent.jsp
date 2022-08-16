@@ -120,16 +120,22 @@
 	<div class="panel-body">
     
     	<table class="table table-hover" style="margin-left: auto; margin-right: auto; max-width:70%; margin-bottom:500p;x">
+    		<!-- qna 게시글 제목 -->
     		<tr>
     			<td>제목</td>
     			<td colspan="3">${vo.q_title }</td>
     		</tr>
+    		<!-- qna 게시글 작성자 -->
     		<tr>
     			<td>작성자</td>
-    			<td>${vo.user_nick }</td>
-    			<td>작성일</td>
-    			<td>${vo.q_date }</td>
+    			<td colspan="3">${vo.user_nick }</td>
     		</tr>
+    		<!-- qna 게시글 작성일 -->
+    		<tr>
+    			<td>작성일</td>
+    			<td colspan="3">${vo.q_date }</td>
+    		</tr>
+    		<!-- qna 게시글 내용 -->
     		<tr>
     			<td>내용</td>
     			<% pageContext.setAttribute("newLine", "\n");  %>
@@ -142,17 +148,23 @@
 		    			<c:if test="${result == vo.user_id }">
 			    			<button onclick="location.href='questionUpdate.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-info">수정</button>
 			    			<button onclick="location.href='questionDelete.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-warning">삭제</button>
-			    			<!-- id가 admin일 때만 뜨도록 해주기 -->
-			    			<button onclick="location.href='answerWriteForm.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-success">답글</button>
+			    			
 			    		</c:if>	
 		    		</c:if>
 	    			<button onclick="location.href='qnaBoard.do?user_id=${result}'" class="btn btn-sm btn-danger">목록</button>
 	    		</td>
     		</tr>
-    		<!-- 답변. 비동기 방식으로 답글 클릭하면 나오도록? -->
+    		<!-- 답변 보여주기, q_answer에 답변이 달렸을 때만! -->
+    		<c:if test="${vo.q_answer != null}">
     		<tr>
     			<td>답변</td>
-    			<td colspan="3" align="center">
+    			<td colspan="3"></td>
+    		</tr>
+    		</c:if>
+    		<!-- 답변달기 : 관리자 id로 입장했을때만 보이도록 하기 -->
+    		<c:if test="${user_id eq 'admin'}">
+    		<tr>
+    			<td colspan="4" align="center">
     				<!-- 답변 -->
 					<div class="form-group">
 						<div class="col-sm-10">
@@ -161,6 +173,12 @@
 					</div>
     			</td>
     		</tr>
+    		<tr>
+    			<td colspan="4" align="center">
+    				<button onclick="location.href='answerWriteForm.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-success">답변하기</button>
+    			</td>
+    		</tr>
+    		</c:if>
     	</table>
     	
     </div>

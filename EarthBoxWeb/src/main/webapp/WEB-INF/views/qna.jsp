@@ -148,7 +148,7 @@ response.setContentType("text/html; charset=utf-8");
 			</thead>
 			<tbody id="tbody">
 				<c:forEach items="${list}" var="list">
-					<!-- 자신이 작성한 글만 보이도록 -->
+					<!-- 자신이 작성한 글만 보이도록 관리자는 모든 글 조회 가능 -->
 					<c:if test="${user_id == list.user_id || user_id eq 'admin'}">
 					<tr>
 						<th scope="row">${list.q_seq }</th>
@@ -161,32 +161,30 @@ response.setContentType("text/html; charset=utf-8");
 			</tbody>
 		</table>
 
-		<!-- 게시판 페이징 -->
-		
-		<ul class="btn-group pagination">
+		<!-- 게시판 페이징 -->		
+		<ul class="btn-group pagination " >
 			<!-- 이전 버튼 생성 여부 확인, 버튼 보여주기 -->
 			<c:if test="${pageMaker.prev}">
 				<li>
-					<a href='/qnaBoard.do?page=${pageMaker.startPage - 1}/>'><i class="fa fa-chevron-left"></i></a>
+					<a href='/qnaBoard.do?page=${pageMaker.startPage - 1}'><i class="fa fa-chevron-left"></i></a>
 				</li>
 			</c:if>
 			
 			<!-- 페이지의 시작 번호와 끝 번호 이용해 페이지 버튼 뿌려주기 -->
-			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
+			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
 				<li>
-					<a href="/qnaBoard.do?page=${pageNum}/>"><i class="fa">${pageNum}</i></a>
+					<a href="/qnaBoard.do?page=${pageNum}"><i class="fa">${pageNum}</i></a>
 				</li>
 			</c:forEach>
 			
 			<!-- 다음 버튼 생성 여부 확인, 버튼 보여주기 -->
-			<c:if test="${pageMaker.next && pageMaker.endPage > 0 }">
+			<!-- test에 추가해야함 pageMaker.endPage > 0 -->
+			<c:if test="${pageMaker.next}">
 				<li>
-					<a href='/qnaBoard.do?page=${pageMaker.endPage+1 }/>'><i class="fa fa-chevron-right"></i></a>
+					<a href='/qnaBoard.do?page=${pageMaker.endPage + 1}'><i class="fa fa-chevron-right"></i></a>
 				</li>
 			</c:if>
-		</ul>
-		
-
+		</ul>		
 
 
 		<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
