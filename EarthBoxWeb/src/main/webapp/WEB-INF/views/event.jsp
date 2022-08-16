@@ -9,18 +9,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>faq</title>
+
+
 <style>
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Lato";
+  font-family:'Noto Sans KR', sans-serif;
 }
 
 .heading-primary {
-  font-size: 2em;
+  font-size: 3em;
   padding: 2em;
   text-align: center;
 }
@@ -35,7 +37,7 @@ body {
   display: block;
   height: 1em;
   width: 100%;
-  background-color: #2ba659;
+  background-color: #599555;
 }
 
 .accordion dd,
@@ -62,15 +64,15 @@ body {
 
 .accordionTitle,
 .accordion__Heading {
-  background-color: #38cc70;
+  background-color: #fff;
   text-align: left;
-  font-weight: 700;
+  font-weight: 600;
   padding: 2em;
   display: block;
   text-decoration: none;
-  color: #fff;
+  color: #599555;
   transition: background-color 0.5s ease-in-out;
-  border-bottom: 1px solid #30bb64;
+  border-bottom: 1px solid #599555;
 }
 .accordionTitle:before,
 .accordion__Heading:before {

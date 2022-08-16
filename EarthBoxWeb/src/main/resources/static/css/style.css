@@ -248,10 +248,11 @@ input: -webkit-autofill:focus {
 }
 #header .header_menu ul.main_menu li a {
     color: #599555;
-    font-size: 17px;
+    font-size: 20px;
     text-transform: uppercase;
-    font-weight: 900;
-    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: -10px;
 }
 #header .header_menu ul.main_menu li a:hover {
     color: #4DA91C;
@@ -289,10 +290,10 @@ input: -webkit-autofill:focus {
     padding-bottom: 13%;
 }
 #slider .slider_text h2 {
-    font-size: 52px;
+    font-size: 72px;
     padding: 10px 0;
     font-weight: 600;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     text-transform: uppercase;
 }
 #slider .slider_text h3 {
@@ -307,13 +308,13 @@ input: -webkit-autofill:focus {
     font-weight: 400;
 }
 #slider .slider_text a.custom_btn {
-    font-size: 14px;
+    font-size: 16px;
     color: #fff;
     padding: 15px 25px;
     background: #43a906;
     border-radius: 2px;
     margin-top: 20px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 600;
 }
 #slider .slider_text h2,
@@ -323,9 +324,9 @@ input: -webkit-autofill:focus {
     text-transform: uppercase;
 }
 #slider .slider_text h3 {
-    font-size: 45px;
+    font-size: 70px;
     padding: 10px 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: normal;
 }
 #slider .slider_overlay {
@@ -389,12 +390,12 @@ input: -webkit-autofill:focus {
     text-transform: uppercase;
     font-weight: 700;
     padding-bottom: 25px;
-    font-family: 'Roboto Slab', serif !important;
+    font-family: 'Noto Sans KR', serif !important;
     color: #222222;
 }
 .wel_header p {
     font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 #welcome .single_item {
     padding-top: 30px;
@@ -421,12 +422,12 @@ input: -webkit-autofill:focus {
     font-size: 18px;
     color: #393939;
     transition: 0.7s;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Noto Sans KR', serif;
 }
 #welcome .item_list p {
     font-size: 14px;
     color: #646464;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 #welcome .item_list:hover .welcome_icon {
     background: #43a906;
@@ -452,7 +453,7 @@ input: -webkit-autofill:focus {
     font-weight: 700;
     color: #fff;
     padding-bottom: 10px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 #volunteer .volunteer_content h3 span {
     color: #43a906;
