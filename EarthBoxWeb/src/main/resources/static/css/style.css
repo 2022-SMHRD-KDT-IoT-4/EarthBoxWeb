@@ -992,14 +992,18 @@ li.fw-flash-message {
 /*Footer*/
 
 #footer {
-    min-height: 100px;
-    background: #222222;
-    color: #fff;
+    min-height: 100px;	
+    background: #599555;
 }
-#footer .copyright,
+#footer .copyright{
+    padding-top: 30px;
+    font-size: 15px;
+    color : #fff;
+}
 #footer .designer {
-    padding-top: 45px;
-    font-size: 14px;
+    padding-top: 30px;
+    font-size: 25px;
+    color : #fff;
 }
 #footer .copyright p {
     text-align: left;
@@ -1011,9 +1015,9 @@ li.fw-flash-message {
 #footer .copyright p span a,
 #footer .designer p,
 #footer .designer a {
-    font-size: 14px;
+    font-size: 20px;
     color: #ffffff;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     padding-left: 3px;
 }
 

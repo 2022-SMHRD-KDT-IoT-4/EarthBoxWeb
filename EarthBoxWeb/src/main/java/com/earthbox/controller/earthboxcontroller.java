@@ -213,4 +213,10 @@ public class earthboxcontroller {
 		System.out.println("이용방법 실행");
 		return "streaming";
 	}
+	
+	@RequestMapping("/interface.do")
+	public String f4() {
+		System.out.println("인터페이스 실행");
+		return "interface";
+	}
 }
