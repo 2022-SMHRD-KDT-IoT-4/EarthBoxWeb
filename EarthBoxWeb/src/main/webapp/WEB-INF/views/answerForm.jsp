@@ -47,8 +47,7 @@
 <body stlye="background=#599555;">
 	<%
 	String result = (String)session.getAttribute("user_id");
-	String groupNo = request.getParameter("groupNo");
-	String groupOrd = request.getParameter("groupOrd");
+	Integer q_seq = (Integer)session.getAttribute("q_seq");
 	%>
 	<!--Start Hedaer Section-->
 	<section id="header">
@@ -110,18 +109,21 @@
 	<!-- form태그 시작 -->
 				<form class="form-horizontal" action="answerWrite.do" method="post">
 
-					<!-- 내용 -->
+					<input type="hidden" id="q_seq" name="q_seq" value="${q_seq }">
+					
+					<!-- question에 답변 작성하기 -->
+					<!-- admin만 입장 가능 -->
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="content">내용:</label>
+						<label class="control-label col-sm-2" for="content">답변 작성하기</label>
 						<div class="col-sm-10">
-							<textarea rows="10" id="q_content" class="form-control" name="q_content"></textarea>
+							<textarea rows="10" id="q_answer" class="form-control" name="q_answer"></textarea>
 						</div>
 					</div>
 					
 					<!-- submit -->
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">작성하기</button>
+							<input type="submit" class="btn btn-default" value="작성하기">
 						</div>
 					</div>
 				</form>

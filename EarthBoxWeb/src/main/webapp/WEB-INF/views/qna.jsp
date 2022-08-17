@@ -144,6 +144,7 @@ response.setContentType("text/html; charset=utf-8");
 					<th scope="col">제목</th>
 					<th scope="col">작성자</th>
 					<th scope="col">작성일</th>
+					<th scope="col">답변 여부</th>
 				</tr>
 			</thead>
 			<tbody id="tbody">
@@ -151,10 +152,25 @@ response.setContentType("text/html; charset=utf-8");
 					<!-- 자신이 작성한 글만 보이도록 관리자는 모든 글 조회 가능 -->
 					<c:if test="${user_id == list.user_id || user_id eq 'admin'}">
 					<tr>
-						<th scope="row">${list.q_seq }</th>
-						<td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
+						<!-- 글 번호 출력 -->
+						<td scope="row">${list.q_seq }</td>
+						<!-- 글 제목 출력 -->
+						<th><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></th>
+						<!-- 글 작성자 출력 -->
 						<td>${list.user_nick }</td>
+						<!-- 글 작성일자 출력 -->
 						<td>${list.q_date }</td>
+						
+						<!-- 답변 여부 출력 -->
+						<!-- 답변이 달려있다면 답변 완료, 달려있지 않다면 조금 더 기다려주세요 출력 -->
+						<!-- 1. 답변이 없다면 -->
+						<c:if test="${list.q_answer == null }">
+							<td>조금만 더 기다려주세요.</td>
+						</c:if>
+						<!-- 답변이 있다면 -->
+						<c:if test="${list.q_answer != null }">
+							<td>답변 완료!</td>
+						</c:if>
 					</tr>
 					</c:if>
 				</c:forEach>

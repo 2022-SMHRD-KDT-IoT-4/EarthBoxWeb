@@ -88,7 +88,7 @@ public class earthboxcontroller {
 		List<QuestionListVO> list = q_mapper.qnaBoardList(cri);
 		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", pagemaker);
-		System.out.println(list);
+		System.out.println("게시판 출력 : " + list);
 		
 		session.setAttribute("user_id", user_id);
 
@@ -99,6 +99,7 @@ public class earthboxcontroller {
 	@RequestMapping("/qnaWriteForm.do")
 	public String qnaForm(HttpSession session) {
 		String user_id = (String) session.getAttribute("user_id");
+		int q_seq = (Integer)session.getAttribute("q_seq");
 		session.setAttribute("user_id", user_id);
 		return "qnaForm";
 	}
@@ -107,6 +108,7 @@ public class earthboxcontroller {
 	@RequestMapping("/questionWrite.do")
 	public String writeQuestion(HttpSession session, QuestionListVO vo) {
 		String user_id = (String) session.getAttribute("user_id");
+		
 		vo.setUser_id(user_id);
 		
 		q_mapper.qnaBoardWrite(vo);
@@ -119,10 +121,12 @@ public class earthboxcontroller {
 	// Q&A 답변 작성하기 위한 폼으로 이동
 	@RequestMapping("/answerWriteForm.do")
 	public String answerForm(HttpSession session, HttpServletRequest request) {
+		System.out.println("답변 작성 페이지");
 		// admin만 답변할 수 있도록 한다
-		String user_id = (String) session.getAttribute("user_id");
+		int q_seq = (Integer)session.getAttribute("q_seq");
+		System.out.println(q_seq);
 		
-		session.setAttribute("user_id", user_id);
+		session.setAttribute("q_seq", q_seq);
 
 		return "answerForm";
 	}
@@ -130,14 +134,16 @@ public class earthboxcontroller {
 	// Q&A 답변 작성
 	@RequestMapping("/answerWrite.do")
 	public String writeAnswer(HttpSession session, QuestionListVO vo) {
+		System.out.println("답변 작성");
 		String user_id = (String) session.getAttribute("user_id");
-		vo.setUser_id(user_id);
+		System.out.println(user_id);
 		
-		q_mapper.qnaAnswerWrite(vo);
-		System.out.println(vo);
+		int row = 0;
+		row = q_mapper.qnaAnswerWrite(vo);
 		
 		session.setAttribute("user_id", user_id);
-		return "redirect:/qnaBoard.do";
+		
+		return "redirect:/questionContentView.do?q_seq=" + vo.getQ_seq();
 	}
 
 	// 작성한 게시글 보기
@@ -149,6 +155,7 @@ public class earthboxcontroller {
 		QuestionListVO vo = q_mapper.questionContentView(q_seq);
 		model.addAttribute("vo", vo);
 		session.setAttribute("user_id", user_id);
+		session.setAttribute("q_seq", q_seq);
 
 		return "qnaContent";
 	}

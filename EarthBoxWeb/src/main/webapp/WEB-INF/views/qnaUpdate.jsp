@@ -115,14 +115,6 @@
 						</div>
 					</div>
 					
-					<!-- 사진 첨부 -->
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="writer">첨부파일</label>
-						<div class="col-sm-10">
-							<input type="file" class="form-control" id="q_file"
-								value="${vo.q_file }" name="q_file">
-						</div>
-					</div>
 					
 					<!-- 내용 -->
 					<div class="form-group">
