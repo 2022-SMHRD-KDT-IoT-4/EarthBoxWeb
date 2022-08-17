@@ -75,8 +75,8 @@ response.setContentType("text/html; charset=utf-8");
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand custom_navbar-brand" href="#"><img
-								src="img/foruslogo.png" style="width: 75px; height: 75px">EarthBox</a>
+							<a class="navbar-brand custom_navbar-brand" href="index.do"><img
+								src="img/foruslogo3.png" style="width: 60px; height: 60px">EarthBox</a>
 						</div>
 						<!--End of navbar-header-->
 
@@ -84,30 +84,30 @@ response.setContentType("text/html; charset=utf-8");
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-
-								<!-- 로그인 하지 않은 상태 -->
 								<%
 								if (result == null) {
 								%>
 								<li><a href="loginForm.do">로그인</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
 								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
+								<li><a href="event.do">공지사항</a></li>
 								<!-- 로그인 한 상태 -->
+								<%
+								} else if (result.equals("admin")) {
+								%>
+								<li><a href="logout.do">로그아웃</a></li>
+								<li><a href="qnaBoard.do?user_id=${result }">QnA</a></li>
+								<li><a href="streaming.do">CCTV</a></li>
+								<li><a href="event.do">공지사항</a></li>
 								<%
 								} else {
 								%>
 								<li><a href="logout.do">로그아웃</a></li>
-								<li><a href="#welcome">판매방법</a></li>
-								<li><a href="#portfolio">구매방법</a></li>
-								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
-								<%
-								}
-								%>
-
+								<li><a href="qnaBoard.do?user_id=${result }">QnA</a></li>
+								<li><a href="event.do">공지사항</a></li>
 							</ul>
+							<%
+							}
+							%>
 						</div>
 						<!-- /.navbar-collapse -->
 					</nav>
@@ -172,35 +172,41 @@ response.setContentType("text/html; charset=utf-8");
 							<td>답변 완료!</td>
 						</c:if>
 					</tr>
+						<tr>
+							<th scope="row">${list.q_seq }</th>
+							<td><a href="questionContentView.do?q_seq=${list.q_seq }">${list.q_title }</a></td>
+							<td>${list.user_nick }</td>
+							<td>${list.q_date }</td>
+						</tr>
 					</c:if>
 				</c:forEach>
 			</tbody>
 		</table>
 
-		<!-- 게시판 페이징 -->		
-		<ul class="btn-group pagination " >
-			<!-- 이전 버튼 생성 여부 확인, 버튼 보여주기 -->
-			<c:if test="${pageMaker.prev}">
-				<li>
-					<a href='/qnaBoard.do?page=${pageMaker.startPage - 1}'><i class="fa fa-chevron-left"></i></a>
-				</li>
-			</c:if>
-			
-			<!-- 페이지의 시작 번호와 끝 번호 이용해 페이지 버튼 뿌려주기 -->
-			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
-				<li>
-					<a href="/qnaBoard.do?page=${pageNum}"><i class="fa">${pageNum}</i></a>
-				</li>
-			</c:forEach>
-			
-			<!-- 다음 버튼 생성 여부 확인, 버튼 보여주기 -->
-			<!-- test에 추가해야함 pageMaker.endPage > 0 -->
-			<c:if test="${pageMaker.next}">
-				<li>
-					<a href='/qnaBoard.do?page=${pageMaker.endPage + 1}'><i class="fa fa-chevron-right"></i></a>
-				</li>
-			</c:if>
-		</ul>		
+		<!-- 게시판 페이징 -->      
+      <ul class="btn-group pagination " >
+         <!-- 이전 버튼 생성 여부 확인, 버튼 보여주기 -->
+         <c:if test="${pageMaker.prev}">
+            <li>
+               <a href='/qnaBoard.do?page=${pageMaker.startPage - 1}'><i class="fa fa-chevron-left"></i></a>
+            </li>
+         </c:if>
+         
+         <!-- 페이지의 시작 번호와 끝 번호 이용해 페이지 버튼 뿌려주기 -->
+         <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
+            <li>
+               <a href="/qnaBoard.do?page=${pageNum}"><i class="fa">${pageNum}</i></a>
+            </li>
+         </c:forEach>
+         
+         <!-- 다음 버튼 생성 여부 확인, 버튼 보여주기 -->
+         <!-- test에 추가해야함 pageMaker.endPage > 0 -->
+         <c:if test="${pageMaker.next}">
+            <li>
+               <a href='/qnaBoard.do?page=${pageMaker.endPage + 1}'><i class="fa fa-chevron-right"></i></a>
+            </li>
+         </c:if>
+      </ul>      
 
 
 		<!-- 로그인 한 사용자에게만 글 작성 버튼 활성화 -->
@@ -219,19 +225,26 @@ response.setContentType("text/html; charset=utf-8");
 	<section id="footer">
 		<div class="container">
 			<div class="row text-center">
-				<div class="col-md-6">
-					<div class="copyright">
-						<p>
-							@ 2016 - Design By <span><a href="">&#9798;</a></span>
-						</p>
+				<div class="col-md-6" style="text-align: left;">
+					<div class="designer">
+						<img src="img/foruslogo3.png" width="60px" height="60px"
+							style="margin-right: 5px;">EARTH BOX
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="designer">
-						<p>
-							A Design By <a href="#">XpeedStudio</a>
-						</p>
-					</div>
+				<div class="col-md-6" style="text-align: left;">
+					<div class="copyright" style="margin-top: 50px;">팀장 조유빈 |
+						사업자번호 123-456-789101</div>
+					<div class="copyright" style="margin-top: -30px;">직업정보제공사업
+						신고번호 2016-서울서초-0051</div>
+					<div class="copyright" style="margin-top: -30px;">주소 서울특별시
+						구로구 디지털로 30길 28, 609호 (당근서비스)</div>
+					<div class="copyright" style="margin-top: -30px;">전화1544-9796
+						|고객문의 cs@daangnservice.com</div>
+					<div class="copyright">제휴 문의 &nbsp;&nbsp;광고 문의&nbsp;&nbsp;
+						PR 문의&nbsp;&nbsp; IR 문의</div>
+					<div class="copyright" style="margin-bottom: 30px;">이용약관
+						&nbsp;&nbsp;개인정보처리방침&nbsp;&nbsp;위치기반서비스 이용약관&nbsp;&nbsp;이용자보호 비전과
+						계획</div>
 				</div>
 			</div>
 			<!--End of row-->

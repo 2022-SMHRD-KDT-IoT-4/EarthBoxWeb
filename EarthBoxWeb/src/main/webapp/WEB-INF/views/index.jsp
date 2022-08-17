@@ -40,13 +40,15 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
-       
+
+
 </head>
 
 <body data-spy="scroll" data-target="#header">
-	
-	<%String result = (String)session.getAttribute("user_id");%>
+
+	<%
+	String result = (String) session.getAttribute("user_id");
+	%>
 	<!--Start Hedaer Section-->
 	<section id="header">
 		<div class="header-area">
@@ -65,7 +67,7 @@
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand custom_navbar-brand" href="#"><img
+							<a class="navbar-brand custom_navbar-brand" href="index.do"><img
 								src="img/foruslogo3.png" style="width: 60px; height: 60px">EarthBox</a>
 						</div>
 						<!--End of navbar-header-->
@@ -73,18 +75,22 @@
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-								<% if(result == null){ %>
+								<%if (result == null) {	%>
 								<li><a href="loginForm.do">로그인</a></li>
-								<li><a href="qnaBoard.do">QnA</a></li>
-								<li><a href="#event">공지사항</a></li>
-							<!-- 로그인 한 상태 -->
-							<% } else { %>
+								<li><a href="loginForm.do">QnA</a></li>
+								<li><a href="event.do">공지사항</a></li>
+								<!-- 로그인 한 상태 -->
+								<%} else if (result.equals("admin")) { %>
 								<li><a href="logout.do">로그아웃</a></li>
 								<li><a href="qnaBoard.do?user_id=${result }">QnA</a></li>
 								<li><a href="streaming.do">CCTV</a></li>
-								<li><a href="faq.do">공지사항</a></li>
-							<%} %>
+								<li><a href="event.do">공지사항</a></li>
+								<%} else{%>
+								<li><a href="logout.do">로그아웃</a></li>
+								<li><a href="qnaBoard.do?user_id=${result }">QnA</a></li>
+								<li><a href="event.do">공지사항</a></li>
 							</ul>
+							<% } %>
 						</div>
 						<!-- /.navbar-collapse -->
 					</nav>
@@ -117,7 +123,7 @@
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
 					<div class="slider_overlay">
-						<img src="img/zero3.jpg" style="width:100%; height:800px;">
+						<img src="img/zero3.jpg" style="width: 100%; height: 800px;">
 						<div class="carousel-caption">
 							<div class="slider_text">
 								<h3>EARTH BOX</h3>
@@ -131,7 +137,7 @@
 				<!--End of item With Active-->
 				<div class="item">
 					<div class="slider_overlay">
-						<img src="img/zero2.jpg" style="width:100%; height:800px;">
+						<img src="img/zero2.jpg" style="width: 100%; height: 800px;">
 						<div class="carousel-caption">
 							<div class="slider_text">
 								<h3>EARTH BOX</h3>
@@ -145,7 +151,7 @@
 				<!--End of Item-->
 				<div class="item">
 					<div class="slider_overlay">
-						<img src="img/zero1.png" style="width:100%; height:800px;">
+						<img src="img/zero1.png" style="width: 100%; height: 800px;">
 						<div class="carousel-caption">
 							<div class="slider_text">
 								<h3>EARTH BOX</h3>
@@ -248,95 +254,192 @@
 		<!--End of container-->
 	</section>
 	<!--------------------------------------------------------------제품 소개 장점 소개 세션----------------------------------------->
-	
-	<!--------------------------------------------------------------세션 1----------------------------------------->
-	<section style="text-align: center;background: #f3f3f3;">
-	<div class= "container">
-	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 80px;"><b>이것은 어스박스.</b></h1>
-	<img src="img/boximg.jpg" style="width:500px; height:400px;">
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-top: 100px;">판매하고 싶은 물건을 넣으면</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-bottom: 100px;">누구나 카카오페이 결제로 구매할 수 있어요!</h1>
-	</div>
-	<div class= "container">
-	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 100px;"><b>어스박스 앱도 있어요</b></h1>
-	<img src="img/boximg2.png" style="width:300px; height:500px;">
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-top: 100px; margin-bottom: 100px;">어스박스에 상품을 등록하거나 확인할 수 있어요.</h1>
-	</div>
-	</section>
-	
-	<!--------------------------------------------------------------세션 2----------------------------------------->
-	<section style="text-align: center;background: #fff">
-	<div class ="container">
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-bottom: 50px; margin-top:100px; color:#599555; font-size:30px; font-weight:700;">판매방법</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; font-size:25px;">팔고싶은 물건 어스박스</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-top:20px; color:#599555; font-size:25px; font-weight:700; ">앱에서 등록하고</h1>
-	
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; font-size:25px;">팔고싶은 물건</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-top:20px; color:#599555; font-size:25px; font-weight:700;">어스박스에 넣고</h1>
-	
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; font-size:25px;">내가 등록한 물건이</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-right: 500px; margin-top:20px; color:#599555; font-size:25px; font-weight:700;">판매되면 계좌로 입금!!</h1>
-	
-	<img src="img/coin.png" style="width:20%; margin-left:500px; margin-top:-330px;">
-	</div>
-	</section>
-	
-	<!--------------------------------------------------------------세션 3----------------------------------------->
-	<section style="text-align: center;background: #fff">
-	<div class ="container">
-	<img src="img/shopping-bag.png" style="width:20%; margin-right:600px; margin-bottom:-550px;">
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-bottom: 50px; margin-top:100px; color:#599555; font-size:30px; font-weight:700;">구매방법</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; font-size:25px;">사고싶은 물건 어스박스</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-top:20px; color:#599555; font-size:25px; font-weight:700;">앱에서 확인하고</h1>
-	
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; font-size:25px;">어스박스에서 상품</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-top:20px; color:#599555; font-size:25px; font-weight:700;">실물 확인하고</h1>
-	
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; font-size:25px;">내가 등록한 물건이</h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif; margin-left: 500px; margin-top:20px; color:#599555; font-size:25px; margin-bottom:130px; font-weight:700;">카드 결제하면 구매완료!!</h1>
-	
-	</div>
-	</section>
-	
-	<!--------------------------------------------------------------세션 4----------------------------------------->
-	<section style="text-align: center;background: #f3f3f3;">
-	<div class= "container">
-	<img src="img/shield.png" Style="width:15%; margin-top:100px; margin-right:500px;">
-	<img src="img/store.png" Style="width:15%; margin-top:100px">
-	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px; margin-right:700px;"><b>안전해요</b></h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 100px; margin-left:680px; margin-top:-141px;"><b>편리해요</b></h1>
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px; margin-right:700px;">물건을 직접 보고 구매하는</h2>
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: -80px;margin-bottom: 100px; margin-right:740px; width:41%;">어스박스에는 벽돌 택배가 없어요.</h2>
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: -100px; margin-left:680px; margin-top:-143px;">어스박스가 팔아드려요!</h2>
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: -80px; margin-left:680px; margin-bottom:170px; ">물건을 맡겨주시면</h2>
-	</div>
-	</section>
-	
-	<!--------------------------------------------------------------세션 4----------------------------------------->
-	<section style="text-align: center;background: #fff;">
-	<div class= "container">
-	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: 80px;margin-bottom: 100px;"><b>어스박스</b></h1>
-	<h1 style="font-family:'Noto Sans KR', sans-serif;margin-top: -70px;margin-bottom: 100px;"><b>이곳에서 만나실 수 있어요</b></h1>
-	
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: 100px;margin-bottom: 100px; margin-right:700px;"><img src="img/pin.png" Style="width:7%;"><b>라인동산아파트</b></h2>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top:-50px; margin-bottom: 50px; margin-right:700px;">관리사무소 안</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-right:700px;">광주 서구 염화로45번길 17</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-right:700px;">운영시간 : 09:00 ~ 21:00</h3>
 
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 100px; margin-left:680px; margin-top:-192px;"><img src="img/pin.png" Style="width:7%;"><b>한국아델리움</b></h2>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top:-50px; margin-bottom: 50px; margin-left:700px;">아파트 정문 옆 상가</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-left:700px;">광주 남구 서문대로627번길 19</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-left:700px;">운영시간 : 10:00 ~ 22:00</h3>
-	
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-top: 150px;margin-bottom: 100px; margin-right:700px;"><img src="img/pin.png" Style="width:7%;"><b>CGI센터</b></h2>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top:-50px; margin-bottom: 50px; margin-right:700px;">2층 복도</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-right:700px;">광주 남구 송암로 60</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-right:700px;">운영시간 : 09:00 ~ 19:00</h3>
-	
-	<h2 style="font-family:'Noto Sans KR', sans-serif;margin-bottom: 200px; margin-left:680px; margin-top:-192px;"><img src="img/pin.png" Style="width:7%;"><b>운암2차남양휴튼</b></h2>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -150px; margin-bottom: 50px; margin-left:700px;">1층 로비 안</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -40px;margin-bottom: 100px; margin-left:700px;">광주 북구 북문대로 88</h3>
-	<h3 style="font-family:'Noto Sans KR', sans-serif;margin-top: -90px; margin-left:700px; margin-bottom:200px;">운영시간 : 11:00 ~ 23:00</h3>
+	<!--------------------------------------------------------------세션 1----------------------------------------->
+	<section style="text-align: center; background: #f3f3f3;">
+		<div class="container">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 100px; margin-bottom: 80px;">
+				<b>이것은 어스박스.</b>
+			</h1>
+			<img src="img/boximg.jpg" style="width: 500px; height: 400px;">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 100px;">판매하고
+				싶은 물건을 넣으면</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 100px;">누구나
+				카카오페이 결제로 구매할 수 있어요!</h1>
+		</div>
+		<div class="container">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 100px;">
+				<b>어스박스 앱도 있어요</b>
+			</h1>
+			<img src="img/boximg2.png" style="width: 300px; height: 500px;">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 100px; margin-bottom: 100px;">어스박스에
+				상품을 등록하거나 확인할 수 있어요.</h1>
+		</div>
+	</section>
+
+	<!--------------------------------------------------------------세션 2----------------------------------------->
+	<section style="text-align: center; background: #fff">
+		<div class="container">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-right: 500px; margin-bottom: 50px; margin-top: 100px; color: #599555; font-size: 30px; font-weight: 700;">판매방법</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-right: 500px; font-size: 25px;">팔고싶은
+				물건 어스박스</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-right: 500px; margin-top: 20px; color: #599555; font-size: 25px; font-weight: 700;">앱에서
+				등록하고</h1>
+
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-right: 500px; font-size: 25px;">팔고싶은
+				물건</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-right: 500px; margin-top: 20px; color: #599555; font-size: 25px; font-weight: 700;">어스박스에
+				넣고</h1>
+
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-right: 500px; font-size: 25px;">내가
+				등록한 물건이</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-right: 500px; margin-top: 20px; color: #599555; font-size: 25px; font-weight: 700;">판매되면
+				계좌로 입금!!</h1>
+
+			<img src="img/coin.png"
+				style="width: 20%; margin-left: 500px; margin-top: -330px;">
+		</div>
+	</section>
+
+	<!--------------------------------------------------------------세션 3----------------------------------------->
+	<section style="text-align: center; background: #fff">
+		<div class="container">
+			<img src="img/shopping-bag.png"
+				style="width: 20%; margin-right: 600px; margin-bottom: -550px;">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-left: 500px; margin-bottom: 50px; margin-top: 100px; color: #599555; font-size: 30px; font-weight: 700;">구매방법</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-left: 500px; font-size: 25px;">사고싶은
+				물건 어스박스</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-left: 500px; margin-top: 20px; color: #599555; font-size: 25px; font-weight: 700;">앱에서
+				확인하고</h1>
+
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-left: 500px; font-size: 25px;">어스박스에서
+				상품</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-left: 500px; margin-top: 20px; color: #599555; font-size: 25px; font-weight: 700;">실물
+				확인하고</h1>
+
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-left: 500px; font-size: 25px;">내가
+				등록한 물건이</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-left: 500px; margin-top: 20px; color: #599555; font-size: 25px; margin-bottom: 130px; font-weight: 700;">카드
+				결제하면 구매완료!!</h1>
+
+		</div>
+	</section>
+
+	<!--------------------------------------------------------------세션 4----------------------------------------->
+	<section style="text-align: center; background: #f3f3f3;">
+		<div class="container">
+			<img src="img/shield.png"
+				Style="width: 15%; margin-top: 100px; margin-right: 500px;"> <img
+				src="img/store.png" Style="width: 15%; margin-top: 100px">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 100px; margin-bottom: 100px; margin-right: 700px;">
+				<b>안전해요</b>
+			</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 100px; margin-left: 680px; margin-top: -141px;">
+				<b>편리해요</b>
+			</h1>
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 100px; margin-bottom: 100px; margin-right: 700px;">물건을
+				직접 보고 구매하는</h2>
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -80px; margin-bottom: 100px; margin-right: 740px; width: 41%;">어스박스에는
+				벽돌 택배가 없어요.</h2>
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -100px; margin-left: 680px; margin-top: -143px;">어스박스가
+				팔아드려요!</h2>
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -80px; margin-left: 680px; margin-bottom: 170px;">물건을
+				맡겨주시면</h2>
+		</div>
+	</section>
+
+	<!--------------------------------------------------------------세션 4----------------------------------------->
+	<section style="text-align: center; background: #fff;">
+		<div class="container">
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 80px; margin-bottom: 100px;">
+				<b>어스박스</b>
+			</h1>
+			<h1
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -70px; margin-bottom: 100px;">
+				<b>이곳에서 만나실 수 있어요</b>
+			</h1>
+
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 100px; margin-bottom: 100px; margin-right: 700px;">
+				<img src="img/pin.png" Style="width: 7%;"><b>라인동산아파트</b>
+			</h2>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -50px; margin-bottom: 50px; margin-right: 700px;">관리사무소
+				안</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -40px; margin-bottom: 100px; margin-right: 700px;">광주
+				서구 염화로45번길 17</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -90px; margin-right: 700px;">운영시간
+				: 09:00 ~ 21:00</h3>
+
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 100px; margin-left: 680px; margin-top: -192px;">
+				<img src="img/pin.png" Style="width: 7%;"><b>한국아델리움</b>
+			</h2>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -50px; margin-bottom: 50px; margin-left: 700px;">아파트
+				정문 옆 상가</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -40px; margin-bottom: 100px; margin-left: 700px;">광주
+				남구 서문대로627번길 19</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -90px; margin-left: 700px;">운영시간
+				: 10:00 ~ 22:00</h3>
+
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: 150px; margin-bottom: 100px; margin-right: 700px;">
+				<img src="img/pin.png" Style="width: 7%;"><b>CGI센터</b>
+			</h2>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -50px; margin-bottom: 50px; margin-right: 700px;">2층
+				복도</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -40px; margin-bottom: 100px; margin-right: 700px;">광주
+				남구 송암로 60</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -90px; margin-right: 700px;">운영시간
+				: 09:00 ~ 19:00</h3>
+
+			<h2
+				style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 200px; margin-left: 680px; margin-top: -192px;">
+				<img src="img/pin.png" Style="width: 7%;"><b>운암2차남양휴튼</b>
+			</h2>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -150px; margin-bottom: 50px; margin-left: 700px;">1층
+				로비 안</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -40px; margin-bottom: 100px; margin-left: 700px;">광주
+				북구 북문대로 88</h3>
+			<h3
+				style="font-family: 'Noto Sans KR', sans-serif; margin-top: -90px; margin-left: 700px; margin-bottom: 200px;">운영시간
+				: 11:00 ~ 23:00</h3>
 	</section>
 
 
@@ -344,19 +447,19 @@
 	<section id="footer">
 		<div class="container">
 			<div class="row text-center">
-				<div class="col-md-6">
-					<div class="copyright">
-						<p>
-							@ 2016 - Design By <span><a href="">&#9798;</a></span>
-						</p>
+				<div class="col-md-6" style="text-align:left;">
+					<div class="designer">
+						<img src="img/foruslogo3.png" width="60px" height="60px"
+							style="margin-right: 5px;">EARTH BOX
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="designer">
-						<p>
-							A Design By <a href="#">XpeedStudio</a>
-						</p>
-					</div>
+				<div class="col-md-6" style="text-align:left;">
+					<div class="copyright" style="margin-top:50px;">팀장 조유빈 | 사업자번호 123-456-789101</div>
+					<div class="copyright" style="margin-top:-30px;">직업정보제공사업 신고번호 2016-서울서초-0051</div>
+					<div class="copyright" style="margin-top:-30px;">주소 서울특별시 구로구 디지털로 30길 28, 609호 (당근서비스)</div>
+					<div class="copyright" style="margin-top:-30px;">전화1544-9796 |고객문의 cs@daangnservice.com</div>
+					<div class="copyright" >제휴 문의 &nbsp;&nbsp;광고 문의&nbsp;&nbsp; PR 문의&nbsp;&nbsp; IR 문의</div>
+					<div class="copyright" style="margin-bottom:30px;">이용약관 &nbsp;&nbsp;개인정보처리방침&nbsp;&nbsp;위치기반서비스 이용약관&nbsp;&nbsp;이용자보호 비전과 계획</div>
 				</div>
 			</div>
 			<!--End of row-->
