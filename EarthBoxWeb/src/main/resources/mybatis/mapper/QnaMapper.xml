@@ -9,10 +9,10 @@
 		perPageNum : 한 페이지 당 보여줄 게시글 개수
 	-->
 	<select id="qnaBoardList" resultType="com.earthbox.domain.QuestionListVO">
-		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.user_id, u.user_type
+		select q.q_seq, q.q_title, u.user_nick, q.q_date, q.user_id, u.user_type, q.q_answer
 		from question_tb q, user_tb u 
 		where q.user_id = u.user_id
-		order by q_date
+		order by q.q_date limit ${pageStart}, #{perPageNum}
 	</select>
 	
 	<!-- q&a 게시판에 글 쓰기 -->
@@ -58,9 +58,4 @@
 		order by q_date
 	</select>
 	
-	
-	<!-- select q.q_seq, q.q_title, u.user_nick, q.q_date 
-		from question_tb q, user_tb u 
-		where q.user_id = u.user_id 
-		order by q.q_date limit ${pageStart}, #{perPageNum} -->
 </mapper>

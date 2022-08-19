@@ -144,41 +144,31 @@
     		<tr>
 	    		<td colspan="4" align="center">
 	    			<!-- 작성자만 글 수정, 삭제 가능하도록 설정 -->
-		    		<c:if test="${result == null}">
+		    		<c:if test="${user_id != null}">
 		    			<c:if test="${result == vo.user_id }">
 			    			<button onclick="location.href='questionUpdate.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-info">수정</button>
 			    			<button onclick="location.href='questionDelete.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-warning">삭제</button>
-			    			
 			    		</c:if>	
 		    		</c:if>
 	    			<button onclick="location.href='qnaBoard.do?user_id=${result}'" class="btn btn-sm btn-danger">목록</button>
+	    			
+	    			<!-- 답변달기 : 관리자 id로 입장했을때만 보이도록 하기 -->
+		    		<c:if test="${user_id eq 'admin'}">
+		    			<button onclick="location.href='answerWriteForm.do?q_seq=${vo.q_seq}&user_id=${result}'" class="btn btn-sm btn-success">답변하기</button>
+		    		</c:if>
 	    		</td>
     		</tr>
+    		
     		<!-- 답변 보여주기, q_answer에 답변이 달렸을 때만! -->
     		<c:if test="${vo.q_answer != null}">
     		<tr>
     			<td>답변</td>
-    			<td colspan="3"></td>
+    			<% pageContext.setAttribute("newLine2", "\n");  %>
+    			<td colspan="3">${fn:replace(vo.q_answer, newLine2, "<br>")}</td>
     		</tr>
     		</c:if>
-    		<!-- 답변달기 : 관리자 id로 입장했을때만 보이도록 하기 -->
-    		<c:if test="${user_id eq 'admin'}">
-    		<tr>
-    			<td colspan="4" align="center">
-    				<!-- 답변 -->
-					<div class="form-group">
-						<div class="col-sm-10">
-							<textarea rows="10" id="q_content" class="form-control" name="q_content"></textarea>
-						</div>
-					</div>
-    			</td>
-    		</tr>
-    		<tr>
-    			<td colspan="4" align="center">
-    				<button onclick="location.href='answerWriteForm.do?q_seq=${vo.q_seq}&user_id=${result }'" class="btn btn-sm btn-success">답변하기</button>
-    			</td>
-    		</tr>
-    		</c:if>
+    		
+    		
     	</table>
     	
     </div>
