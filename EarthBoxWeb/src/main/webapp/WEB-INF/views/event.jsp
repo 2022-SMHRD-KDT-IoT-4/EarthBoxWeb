@@ -42,164 +42,204 @@
         <![endif]-->
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family:'Noto Sans KR', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .heading-primary {
-  font-size: 3em;
-  padding: 1em;
-  text-align: center;
+	font-size: 3em;
+	padding: 1em;
+	text-align: center;
 }
 
-.accordion dl,
-.accordion-list {
-  border: 1px solid #ddd;
-}
-.accordion dl:after,
-.accordion-list:after {
-  content: "";
-  display: block;
-  height: 1em;
-  width: 100%;
-  background-color: #599555;
+.accordion dl, .accordion-list {
+	border: 1px solid #ddd;
 }
 
-.accordion dd,
-.accordion__panel {
-  background-color: #eee;
-  font-size: 1em;
-  line-height: 1.5em;
+.accordion dl:after, .accordion-list:after {
+	content: "";
+	display: block;
+	height: 1em;
+	width: 100%;
+	background-color: #599555;
+}
+
+.accordion dd, .accordion__panel {
+	background-color: #eee;
+	font-size: 1em;
+	line-height: 1.5em;
 }
 
 .accordion p {
-  padding: 1em 2em 1em 2em;
+	margin-left: 20px;
+	font-size: 20px;
+	color: #222222;
 }
 
 .accordion {
-  position: relative;
-  background-color: #eee;
+	position: relative;
+	background-color: #eee;
 }
 
 .container2 {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2em 0 2em 0;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 2em 0 2em 0;
 }
 
-.accordionTitle,
-.accordion__Heading {
-  background-color: #fff;
-  text-align: left;
-  font-weight: 600;
-  padding: 2em;
-  display: block;
-  text-decoration: none;
-  color: #599555;
-  transition: background-color 0.5s ease-in-out;
-  border-bottom: 1px solid #599555;
-}
-.accordionTitle:before,
-.accordion__Heading:before {
-  content: "+";
-  font-size: 1.5em;
-  line-height: 0.5em;
-  float: left;
-  margin-right:30px;
-  transition: transform 0.3s ease-in-out;
-}
-.accordionTitle:hover,
-.accordion__Heading:hover {
-  background-color: #2ba659;
+.accordionTitle, .accordion__Heading {
+	background-color: #fff;
+	text-align: left;
+	font-weight: 600;
+	padding: 2em;
+	display: block;
+	text-decoration: none;
+	color: #599555;
+	transition: background-color 0.5s ease-in-out;
+	border-bottom: 1px solid #599555;
 }
 
-.accordionTitleActive,
-.accordionTitle.is-expanded {
-  background-color: #2ba659;
+.accordionTitle:before, .accordion__Heading:before {
+	content: "+";
+	font-size: 1.5em;
+	line-height: 0.5em;
+	float: left;
+	margin-right: 30px;
+	transition: transform 0.3s ease-in-out;
 }
-.accordionTitleActive:before,
-.accordionTitle.is-expanded:before {
-  transform: rotate(-225deg);
+
+.accordionTitle:hover, .accordion__Heading:hover {
+	background-color: #2ba659;
+}
+
+.accordionTitleActive, .accordionTitle.is-expanded {
+	background-color: #2ba659;
+}
+
+.accordionTitleActive:before, .accordionTitle.is-expanded:before {
+	transform: rotate(-225deg);
 }
 
 .accordionItem {
-  height: auto;
-  overflow: hidden;
-  max-height: 50em;
-  transition: max-height 1s;
+	height: auto;
+	overflow: hidden;
+	max-height: 50em;
+	transition: max-height 1s;
 }
+
 @media screen and (min-width: 48em) {
-  .accordionItem {
-    max-height: 15em;
-    transition: max-height 0.5s;
-  }
+	.accordionItem {
+		max-height: 45em;
+		transition: max-height 0.5s;
+	}
 }
 
 .accordionItem.is-collapsed {
-  max-height: 0;
+	max-height: 0;
 }
 
 .no-js .accordionItem.is-collapsed {
-  max-height: auto;
+	max-height: auto;
 }
 
 .animateIn {
-  -webkit-animation: accordionIn 0.45s normal ease-in-out both 1;
-          animation: accordionIn 0.45s normal ease-in-out both 1;
+	-webkit-animation: accordionIn 0.45s normal ease-in-out both 1;
+	animation: accordionIn 0.45s normal ease-in-out both 1;
 }
 
 .animateOut {
-  -webkit-animation: accordionOut 0.45s alternate ease-in-out both 1;
-          animation: accordionOut 0.45s alternate ease-in-out both 1;
+	-webkit-animation: accordionOut 0.45s alternate ease-in-out both 1;
+	animation: accordionOut 0.45s alternate ease-in-out both 1;
 }
 
-@-webkit-keyframes accordionIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.9) rotateX(-60deg);
-    transform-origin: 50% 0;
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+@
+-webkit-keyframes accordionIn { 0% {
+	opacity: 0;
+	transform: scale(0.9) rotateX(-60deg);
+	transform-origin: 50% 0;
 }
 
-@keyframes accordionIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.9) rotateX(-60deg);
-    transform-origin: 50% 0;
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+100
+%
+{
+opacity
+:
+1;
+transform
+:
+scale(
+1
+);
 }
-@-webkit-keyframes accordionOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.9) rotateX(-60deg);
-  }
 }
-@keyframes accordionOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.9) rotateX(-60deg);
-  }
-}/*# sourceMappingURL=main.css.map */
+@
+keyframes accordionIn { 0% {
+	opacity: 0;
+	transform: scale(0.9) rotateX(-60deg);
+	transform-origin: 50% 0;
+}
+
+100
+%
+{
+opacity
+:
+1;
+transform
+:
+scale(
+1
+);
+}
+}
+@
+-webkit-keyframes accordionOut { 0% {
+	opacity: 1;
+	transform: scale(1);
+}
+
+100
+%
+{
+opacity
+:
+0;
+transform
+:
+scale(
+0.9
+)
+rotateX(
+-60deg
+);
+}
+}
+@
+keyframes accordionOut { 0% {
+	opacity: 1;
+	transform: scale(1);
+}
+100
+%
+{
+opacity
+:
+0;
+transform
+:
+scale(
+0.9
+)
+rotateX(
+-60deg
+);
+}
+} /*# sourceMappingURL=main.css.map */
 </style>
 
 </head>
@@ -235,22 +275,30 @@ body {
 						<div class="collapse navbar-collapse zero_mp"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right main_menu">
-								<%if (result == null) {	%>
+								<%
+								if (result == null) {
+								%>
 								<li><a href="loginForm.do">로그인</a></li>
 								<li><a href="loginForm.do">QnA</a></li>
 								<li><a href="event.do">공지사항</a></li>
 								<!-- 로그인 한 상태 -->
-								<%} else if (result.equals("admin")) { %>
+								<%
+								} else if (result.equals("admin")) {
+								%>
 								<li><a href="logout.do">로그아웃</a></li>
 								<li><a href="qnaBoard.do?user_id=${result }">QnA</a></li>
 								<li><a href="streaming.do">CCTV</a></li>
 								<li><a href="event.do">공지사항</a></li>
-								<%} else{%>
+								<%
+								} else {
+								%>
 								<li><a href="logout.do">로그아웃</a></li>
 								<li><a href="qnaBoard.do?user_id=${result }">QnA</a></li>
 								<li><a href="event.do">공지사항</a></li>
 							</ul>
-							<% } %>
+							<%
+							}
+							%>
 						</div>
 						<!-- /.navbar-collapse -->
 					</nav>
@@ -263,51 +311,50 @@ body {
 		<!--end of header area-->
 	</section>
 	<!--End of Hedaer Section-->
-	
+
 	<div class="container2">
 		<h1 class="heading-primary">Earth Box</h1>
-		<h1 class="heading-primary" style="margin-top:-60px;">공지사항 / 이벤트</h1>
+		<h1 class="heading-primary" style="margin-top: -60px;">공지사항 / 이벤트</h1>
 		<div class="accordion">
 			<dl>
 				<dt>
 					<a href="#accordion1" aria-expanded="false"
 						aria-controls="accordion1"
-						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
-						[부적절한 서비스 이용 제제 안내]</a>
+						class="accordion-title accordionTitle js-accordionTrigger"
+						style="font-size: 20px;">EarthBox [부적절한 서비스 이용 제제 안내]</a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion1" aria-hidden="true">
-					<p>일반적인 EarthBox 한칸의 크기는 가로 40cm, 세로28cm,높이 40cm 이며, 아파트에 설치되어
-						있는 파라박스 한칸의 크기는 모두 동일합니다.</p>
-					<p>이용에 참고해주시면 감사드리겠습니다:)</p>
+					<p style="margin-top: 20px;">현재 일부 사용자 중 어스박스서비스를 부적절하게 이용하는</p>
+					<p style="margin-bottom: 20px;">유저가 확인되며 관련하여 신고가접수되고 있습니다.</p>
+					<p>따라서, 아래와 같이 서비스를 부적절하게 이용하여 적발되거나</p>
+					<p>신고가 접수되는 경우 일부 서비스 이용이 제한될 수 있음을</p>
+					<p>안내드립니다.</p>
+					<p style="margin-bottom: 30px;">주의</p>
+					<p>- 어스박스 한 칸에 여러 종류의 상품을 한꺼번에 등록하는 경우</p>
+					<p>- 2개 이상의 계정으로 동일한 상품의 판매글을 여러 개 게시하는 경우</p>
+					<p>- 가품이나 금지품목을 판매하는 경우</p>
+					<p style="margin-bottom: 20px;">- 그 외 서비스 운영정책을 위반하는 경우</p>
 
 				</dd>
 				<dt>
 					<a href="#accordion2" aria-expanded="false"
 						aria-controls="accordion2"
-						class="accordion-title accordionTitle js-accordionTrigger">
-						[공지사항]어스박스 판매 등록 수 변경</a>
+						class="accordion-title accordionTitle js-accordionTrigger"
+						style="font-size: 20px;"> [공지사항]어스박스 판매 등록 수 변경</a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion2" aria-hidden="true">
-					<p>몰라</p>
-					<p>검색ㄱ</p>
-				</dd>
-				<dt>
-					<a href="#accordion3" aria-expanded="false"
-						aria-controls="accordion3"
-						class="accordion-title accordionTitle js-accordionTrigger">
-						[이벤트]어스박스만물상점 챌린지 </a>
-				</dt>
-				<dd class="accordion-content accordionItem is-collapsed"
-					id="accordion3" aria-hidden="true">
-					<p>몰라</p>
+					<p style="margin-top: 20px;">이제 파라박스에 판매 물품을</p>
+					<p style="margin-bottom: 20px;">
+						한 번에 <b>최대 5개</b>까지 등록하실 수 있습니다!
+					</p>
 				</dd>
 				<dt>
 					<a href="#accordion4" aria-expanded="false"
 						aria-controls="accordion4"
-						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
-						[이벤트]어스박스 1차 랜덤 Drop!</a>
+						class="accordion-title accordionTitle js-accordionTrigger"
+						style="font-size: 20px;">EarthBox [이벤트]어스박스 1차 랜덤 Drop!</a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion4" aria-hidden="true">
@@ -318,8 +365,8 @@ body {
 				<dt>
 					<a href="#accordion5" aria-expanded="false"
 						aria-controls="accordion5"
-						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
-						어스박스 이용시 참고하세요!!</a>
+						class="accordion-title accordionTitle js-accordionTrigger"
+						style="font-size: 20px;">EarthBox 어스박스 이용시 참고하세요!!</a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion5" aria-hidden="true">
@@ -330,8 +377,8 @@ body {
 				<dt>
 					<a href="#accordion6" aria-expanded="false"
 						aria-controls="accordion6"
-						class="accordion-title accordionTitle js-accordionTrigger">EarthBox
-						어스박스 서비스 오픈!</a>
+						class="accordion-title accordionTitle js-accordionTrigger"
+						style="font-size: 20px;">EarthBox 어스박스 서비스 오픈!</a>
 				</dt>
 				<dd class="accordion-content accordionItem is-collapsed"
 					id="accordion6" aria-hidden="true">
@@ -339,29 +386,59 @@ body {
 						있는 파라박스 한칸의 크기는 모두 동일합니다.</p>
 					<p>이용에 참고해주시면 감사드리겠습니다:)</p>
 				</dd>
-				
+				<dt>
+					<a href="#accordion3" aria-expanded="false"
+						aria-controls="accordion3"
+						class="accordion-title accordionTitle js-accordionTrigger"
+						style="font-size: 20px;"> 어스박스 앱 서비스 오픈! </a>
+				</dt>
+				<dd class="accordion-content accordionItem is-collapsed"
+					id="accordion3" aria-hidden="true">
+					<p style="margin-top: 20px; margin-bottom:20px;">쉽고 안전한 비대면 중고거래 어스박스가 드디어 어플리케이션을 런칭했어요!</p>
+					<p>아직도 앱으로만 중고거래 하시나요?</p>
+					<p style="margin-bottom:20px;">오늘부터는 어스박스에서 비대면 중고거래의 재미를 느껴보세요.</p>
+					<p>어스박스에서는 채팅이나 연락이 없고, 낯선 사람을 만나지도 않아요.</p>
+					<p> ● 시간과 장소의 제약 없이, 내가 원하는 때에 거래!</p>
+					<p style="margin-bottom:20px;">어스박스는 비대면 중고거래 자판기를 통해 중고거래를 하기 때문에, 내가 편한 시간에, 내가 원하는
+						장소에서 거래를 할 수 있어요.</p>
+				    <p> ● 어스박스를 통한 거래로 사기 예방!</p>
+				    <p style="margin-bottom:20px;"> 중고거래 시 발생하는 사기는 대부분 택배거래로
+						인해 발생하지만, 어스박스에서는 직접 물품을 보고 구매할 수 있기 때문에 사기로부터 안전해요.</p>
+					<p> ● 낯선 사람을 만나지 않는 거래!</p>
+					<p> 직거래를 하실 때 낯선 사람을 만나는 것에 대한 부담감, 불안감이 있으셨나요?</p>
+					<p style="margin-bottom:20px;"> 어스박스에서는 비대면 중고거래 자판기를 통해 거래를 하기 때문에 낯선 사람을 만날 필요가 없어요. 이제는 어스박스에서 비대면으로
+						중고거래하세요 :)</p>
+				</dd>
+
 			</dl>
 		</div>
 	</div>
 
-	
+
 	<!--------------------------------------------------------------푸터----------------------------------------->
 	<section id="footer">
 		<div class="container">
 			<div class="row text-center">
-				<div class="col-md-6" style="text-align:left;">
+				<div class="col-md-6" style="text-align: left;">
 					<div class="designer">
 						<img src="img/foruslogo3.png" width="60px" height="60px"
 							style="margin-right: 5px;">EARTH BOX
 					</div>
 				</div>
-				<div class="col-md-6" style="text-align:left;">
-					<div class="copyright" style="margin-top:50px;">팀장 조유빈 | 사업자번호 123-456-789101</div>
-					<div class="copyright" style="margin-top:-30px;">직업정보제공사업 신고번호 2016-서울서초-0051</div>
-					<div class="copyright" style="margin-top:-30px;">주소 서울특별시 구로구 디지털로 30길 28, 609호 (당근서비스)</div>
-					<div class="copyright" style="margin-top:-30px;">전화1544-9796 |고객문의 cs@daangnservice.com</div>
-					<div class="copyright" >제휴 문의 &nbsp;&nbsp;광고 문의&nbsp;&nbsp; PR 문의&nbsp;&nbsp; IR 문의</div>
-					<div class="copyright" style="margin-bottom:30px;">이용약관 &nbsp;&nbsp;개인정보처리방침&nbsp;&nbsp;위치기반서비스 이용약관&nbsp;&nbsp;이용자보호 비전과 계획</div>
+				<div class="col-md-6" style="text-align: left;">
+					<div class="copyright" style="margin-top: 50px;">팀장 조유빈 |
+						사업자번호 123-456-789101</div>
+					<div class="copyright" style="margin-top: -30px;">직업정보제공사업
+						신고번호 2016-서울서초-0051</div>
+					<div class="copyright" style="margin-top: -30px;">주소 서울특별시
+						구로구 디지털로 30길 28, 609호 (당근서비스)</div>
+					<div class="copyright" style="margin-top: -30px;">전화1544-9796
+						|고객문의 cs@daangnservice.com</div>
+					<div class="copyright">제휴 문의 &nbsp;&nbsp;광고 문의&nbsp;&nbsp;
+						PR 문의&nbsp;&nbsp; IR 문의</div>
+					<div class="copyright" style="margin-bottom: 30px;">이용약관
+						&nbsp;&nbsp;개인정보처리방침&nbsp;&nbsp;위치기반서비스 이용약관&nbsp;&nbsp;이용자보호 비전과
+						계획</div>
 				</div>
 			</div>
 			<!--End of row-->
@@ -371,7 +448,7 @@ body {
 	<!--------------------------------------------------------------푸터----------------------------------------->
 
 
-	
+
 	<script>
 		//uses classList, setAttribute, and querySelectorAll
 		//if you want this to work in IE8/9 youll need to polyfill these

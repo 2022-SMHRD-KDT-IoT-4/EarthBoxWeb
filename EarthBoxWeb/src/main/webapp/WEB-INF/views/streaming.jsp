@@ -114,7 +114,7 @@
 				<b>한국아델리움</b>
 			</h1>
 		</div>
-		<iframe src="http://172.30.1.47:5000/" title="내용" width="50%"
+		<iframe src="http://192.168.86.158:5000/" title="내용" width="50%"
 			height="500px" style="margin-top: 200px; margin-left: 500px;"></iframe>
 	</div>
 
