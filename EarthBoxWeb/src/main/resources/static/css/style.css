@@ -994,6 +994,7 @@ li.fw-flash-message {
 #footer {
     min-height: 100px;	
     background: #599555;
+    
 }
 #footer .copyright{
     padding-top: 30px;
@@ -1196,4 +1197,12 @@ ul.entry-meta {
 }
 .main-content.blog-w.rap,.main-content.container.blog-wrap.single-blog {
     margin-top: 80px;
+}
+
+@media (max-width : 760px) {
+	
+	.copyright {
+		margin-top: -15px!important;
+	}
+	
 }

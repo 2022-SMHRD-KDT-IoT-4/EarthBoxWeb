@@ -81,10 +81,12 @@ public class earthboxcontroller {
 		System.out.println("q&a 게시판 실행");
 		String user_id = (String) session.getAttribute("user_id");
 
+		// 페이징 위한 메소드 불러오기
 		PageMaker pagemaker = new PageMaker();
 		pagemaker.setCri(cri);
 		pagemaker.setTotalCount(100);
 
+		// QusetionListVO에 들어있는 데이터 List 형태로 불러와 model 객체에 담아놓기
 		List<QuestionListVO> list = q_mapper.qnaBoardList(cri);
 		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", pagemaker);
@@ -109,6 +111,7 @@ public class earthboxcontroller {
 	public String writeQuestion(HttpSession session, QuestionListVO vo) {
 		String user_id = (String) session.getAttribute("user_id");
 		
+		// 글 작성자를 session에 저장된 user_id로 설정
 		vo.setUser_id(user_id);
 		
 		q_mapper.qnaBoardWrite(vo);
@@ -122,6 +125,7 @@ public class earthboxcontroller {
 	@RequestMapping("/answerWriteForm.do")
 	public String answerForm(HttpSession session, HttpServletRequest request) {
 		System.out.println("답변 작성 페이지");
+		
 		// admin만 답변할 수 있도록 한다
 		int q_seq = (Integer)session.getAttribute("q_seq");
 		System.out.println(q_seq);
