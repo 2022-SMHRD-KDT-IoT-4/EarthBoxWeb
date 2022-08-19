@@ -444,8 +444,13 @@ rotateX(
 			<!--End of row-->
 		</div>
 		<!--End of container-->
+	<section id="footer" bottom: 0px; left: 0px; right: 0px">
+		
 	</section>
 	<!--------------------------------------------------------------푸터----------------------------------------->
+<!--End of footer-->
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="/js/footer.js"></script>	
 
 
 
